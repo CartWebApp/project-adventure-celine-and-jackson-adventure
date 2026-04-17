@@ -1,6 +1,7 @@
 body {
     background-image: url(Ordinary_world.jpg);
     background-size: cover;
+    height: 1050px;
 }
 .overlay {
     position: relative;
