@@ -8,11 +8,31 @@
     <script href="game.js" defer></script>
 </head>
 <body>
+
+
     <h1 class="cave_title">Hush Cave</h1>
+
+        <div id="game-screen" style="display: none;">
+        <canvas id="gameCanvas" width="800" height="600"></canvas>
+        <div id="story-box">You enter the cave, and as you walk further, you find an old chest.</div>
+</div>
+
+<div id="chest">
+    <canvas id="gameCanvas" width="800" height="600"></canvas>
+    <div id="item_description">You found a chestplate!</div>
+    <div id="item_description">Seems to be in good condition...</div>
+    <div id="item_description">How did it end up in a cave?</div>
+</div>
+
+    </div>
     <p>Touch the stone?</p>
     <button id="choice_1a">Yes</button>
     <button id="choice-1b">No</button>
 
-    <p></p>
+    <div id="game-screen" style="display: none;">
+        <canvas id="gameCanvas" width="800" height="600"></canvas>
+        <div id="story-box">You touch the stone. Suddenly, you are hit with a bright flash of light.</div>
+        <div id="story-box">As the light begins to fade, and you regain your vision, nothing seemed to change. You exit the cave...</div>
+    </div>
 </body>
 </html>
