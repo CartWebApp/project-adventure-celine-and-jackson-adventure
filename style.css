@@ -8,7 +8,7 @@ body {
     width: 215px;
     padding: 20px;
     border-radius: 10px;
-    transform: translate(250%, 50%);
+    transform: translate(350%, 100%);
     display: flex;
     flex-direction: column;
     align-content: center;

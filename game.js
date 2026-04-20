@@ -4,7 +4,3 @@ function healthBar () {}
 
 
 // menu
-// let playBtn = document.getElementById('btn');
-// playBtn.addEventListener('click', () => {
-
-// });
