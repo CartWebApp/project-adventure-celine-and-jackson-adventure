@@ -1,10 +1,20 @@
 // health bar
 let health = document.getElementById('health_bar');
-function healthBar () {}
+let health_bar = [];
+function healthBar () {
+   
+}
 
+healthBar()
+
+function renderBar () {
+    const bar = document.createElement('bar');
+    bar.classname = 'health'
+    
+}
 
 // menu
-// let playBtn = document.getElementById('btn');
-// playBtn.addEventListener('click', () => {
 
-// });
+
+
+

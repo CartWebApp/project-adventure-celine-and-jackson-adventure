@@ -1,26 +1,34 @@
 body {
-    background-image: url(Ordinary_world.jpg);
+    background-image: url(Home-menu_screen.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
     background-size: cover;
+    justify-content: flex-start;
     height: 1050px;
 }
+
 .overlay {
     position: relative;
-    width: 215px;
-    padding: 20px;
+    width: 400px;
+    height: 300px;
     border-radius: 10px;
-    transform: translate(250%, 50%);
+    transform: translate(199%, 50%);
     display: flex;
     flex-direction: column;
-    align-content: center;
+    align-items: center;
     background-color: rgba(0, 0, 0, 0.2);
 }
 
 .overlay h1 {
+    font-family: 'MedievalSharp.ttf';
+    font-size: 90px;
     text-align: center;
     color: white;
 }
 
 .btn {
+    text-decoration: none;
+    width: 100px;
     padding: 10px;
     border: none;
     background-color: #60b0e3;
@@ -29,9 +37,12 @@ body {
 }
 
 .btn:hover {
-    background-color:#4d90ba
+    background-color: #4d90ba
 }
+
 .continue {
+    margin-top: 20px;
+    width: 100px;
     padding: 10px;
     border: none;
     background-color: #60b0e3;
@@ -40,17 +51,32 @@ body {
 }
 
 .continue:hover {
-    background-color:#4d90ba
+    background-color: #4d90ba
 }
 
 .newgame {
-        padding: 10px;
+    margin-top: 20px;
+    width: 100px;
+    padding: 10px;
     border: none;
     background-color: #60b0e3;
     color: white;
     border-radius: 5px;
+    text-decoration: nonw;
 }
 
 .newgame:hover {
-    background-color:#4d90ba
+    background-color: #4d90ba
+}
+
+#gameCanvas {
+    position: relative;
+    width: 400px;
+    height: 300px;
+    border-radius: 10px;
+    transform: translate(199%, 50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0);
 }
