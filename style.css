@@ -93,3 +93,32 @@ body {
 #gif {
     transform: translate(400%, -100%);
 }
+
+/* Health Bar Styles */
+#health-bar, #health_bar {
+    position: relative;
+    width: 200px;
+    height: 20px;
+    background-color: red;
+    border: 1px solid black;
+    margin: 10px;
+}
+
+.health-fill {
+    height: 100%;
+    background-image: url('health.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    transition: width 0.3s;
+}
+
+.health-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    line-height: 20px;
+    color: white;
+    font-weight: bold;
+}
