@@ -80,3 +80,16 @@ body {
     align-items: center;
     background-color: rgba(0, 0, 0, 0);
 }
+
+#image {
+    background-image: url(Cave_3.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    height: 1058px;
+    width: 1505px;
+}
+
+#gif {
+    transform: translate(400%, -100%);
+}
