@@ -1,4 +1,4 @@
-// health bar
+// health bar //
 let maxHealth = 100;
 let currentHealth = 100;
 
@@ -41,14 +41,12 @@ function heal(amount) {
     updateHealthBar();
 }
 
-// Initialize health bar on load
 window.addEventListener('load', () => {
     updateHealthBar();
     showPage('menu');
 });
 
-// menu
-
+// menu //
 function typeText(element, text, speed = 50) {
     let i = 0;
     element.textContent = '';
@@ -68,11 +66,11 @@ function showPage(pageId) {
     const bgImages = {
         'menu': 'url(Home-menu_screen.jpg)',
         'ordinary-world': 'url(Ordinary_world.jpg)',
-       
+       'inventory': 'url()'
     };
     document.body.style.backgroundImage = bgImages[pageId] || 'url(Home-menu_screen.jpg)';
 
-    // Animate story text
+    // Animated story text //
     setTimeout(() => {
         const page = document.getElementById(pageId);
         const storyBoxes = page.querySelectorAll('#story-box');
@@ -87,6 +85,35 @@ window.addEventListener('load', () => {
     showPage('menu');
 });
 
+// inventory //
+const inventory = document.getElementById(pageId);
+function addItem(item) {
+    const existingItem = inventory.find(i => i.name === item.name);
+    if (existingItem) {
+        existingItem.quantity += item.quantity;
+    } else {
+        inventory.push(item);
+    }
+    updateInventoryUI();
+}
 
+function removeItem(itemName, quantity = 1) {
+    const itemIndex = inventory.findIndex(i => i.name === itemName);
+    if (itemIndex !== -1) {
+        inventory[itemIndex].quantity -= quantity;
+        if (inventory[itemIndex].quantity <= 0) {
+            inventory.splice(itemIndex, 1);
+        }
+    }
+    updateInventoryUI();
+}
 
-
+function updateInventoryUI() {
+    const inventoryContainer = document.getElementById('inventory-container');
+    inventoryContainer.innerHTML = ''; 
+    inventory.forEach(item => {
+        const itemElement = document.createElement('div');
+        itemElement.textContent = `${item.name} (x${item.quantity})`;
+        inventoryContainer.appendChild(itemElement);
+    });
+}

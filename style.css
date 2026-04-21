@@ -10,7 +10,7 @@ body {
 .overlay {
     position: relative;
     width: 400px;
-    height: 300px;
+    height: 200px;
     border-radius: 10px;
     transform: translate(199%, 50%);
     display: flex;
@@ -62,7 +62,7 @@ body {
     background-color: #60b0e3;
     color: white;
     border-radius: 5px;
-    text-decoration: nonw;
+    text-decoration: none;
 }
 
 .newgame:hover {
@@ -121,4 +121,9 @@ body {
     line-height: 20px;
     color: white;
     font-weight: bold;
+}
+
+/* Inventory */
+#inventory {
+    height: 75px;
 }

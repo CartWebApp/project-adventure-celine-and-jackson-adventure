@@ -10,7 +10,12 @@
 </head>
 
 <body>
+    <div id="inventory-container">
+    <img src="backpack.webp" id="inventory" onclick="showpage('inventory')">
+    </div>
     <div id="health-bar"></div>
+
+    <!--Menu Screen-->
 
 <div id="menu" class="page overlay">
         <h1>Mystic Realms</h1>
@@ -20,6 +25,8 @@
             <button id="newgame-btn" class="btn" onclick="showPage('ordinary-world')">New Game</button>
         </div>
     </div>
+
+    <!-- Hush Forest/beginning of game-->
 
     <div id="ordinary-world" class="page" style="display: none;">
         <canvas id="gameCanvas" width="800" height="600"></canvas>
@@ -60,7 +67,7 @@
     </div>
 
     
-    </div> <!-- end cave -->
+    </div> <!-- end of the Hush cave -->
 
 <div id="forest-2" class="page" style="display: none;">
 <div id="health_bar">
