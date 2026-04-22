@@ -86,7 +86,6 @@ window.addEventListener('load', () => {
 });
 
 // inventory //
-const inventory = document.getElementById(pageId);
 function addItem(item) {
     const existingItem = inventory.find(i => i.name === item.name);
     if (existingItem) {
@@ -117,3 +116,8 @@ function updateInventoryUI() {
         inventoryContainer.appendChild(itemElement);
     });
 }
+
+// render inventory
+inventory.addEventListener('click', () => {
+    showPage('inventory');
+});
