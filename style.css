@@ -94,7 +94,7 @@ body {
     transform: translate(400%, -100%);
 }
 
-/* Health Bar Styles */
+/* Health Bar */
 #health-bar, #health_bar {
     position: relative;
     width: 200px;
@@ -126,4 +126,33 @@ body {
 /* Inventory */
 #inventory {
     height: 75px;
+    width: 130px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    grid-template-columns: repeat(5, 1fr); 
+    grid-template-columns: repeat(5, 1fr);
+    padding: 10px; 
+    border: 2px solid #ccc; 
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+#inventory-container {
+    display: grid;
+    width: 200px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    display: flex;
+    
+}
+
+.inventory-slot {
+    position:absolute;
+    padding: 15px;
+    background-color: rgba(0, 0, 0, 1);
+    border: solid 3px rgb(224, 202, 160);
+    gap: 15px;
+    width: 30px;
+    height: 30px;
 }

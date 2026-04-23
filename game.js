@@ -85,7 +85,9 @@ window.addEventListener('load', () => {
     showPage('menu');
 });
 
-// inventory //
+const inventory = [];
+
+// Add item to inventory
 function addItem(item) {
     const existingItem = inventory.find(i => i.name === item.name);
     if (existingItem) {
@@ -96,6 +98,7 @@ function addItem(item) {
     updateInventoryUI();
 }
 
+// Remove item from inventory
 function removeItem(itemName, quantity = 1) {
     const itemIndex = inventory.findIndex(i => i.name === itemName);
     if (itemIndex !== -1) {
@@ -107,6 +110,7 @@ function removeItem(itemName, quantity = 1) {
     updateInventoryUI();
 }
 
+// Update inventory UI
 function updateInventoryUI() {
     const inventoryContainer = document.getElementById('inventory-container');
     inventoryContainer.innerHTML = ''; 
@@ -117,7 +121,12 @@ function updateInventoryUI() {
     });
 }
 
-// render inventory
-inventory.addEventListener('click', () => {
-    showPage('inventory');
+// Toggle inventory display
+document.addEventListener('keydown', (event) => {
+    if (event.key === 'i') { // Press 'E' to open inventory
+        const inventoryContainer = document.getElementById('inventory-container');
+        inventoryContainer.style.display = inventoryContainer.style.display === 'none' ? 'block' : 'none';
+    }
+    
 });
+
