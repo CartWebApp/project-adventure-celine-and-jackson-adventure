@@ -12,20 +12,20 @@
 <body>
     <nav id="inventory-container">
         <div id="inventory">
-                <div class="inventory-slot"></div>
-                <div class="inventory-slot"></div>
-                <div class="inventory-slot"></div>
-                <div class="inventory-slot"></div>
-                <div class="inventory-slot"></div>
-            </div>
-        </div> 
-    <img src="backpack.webp" id="inventory">
+            <div class="inventory-slot"></div>
+            <div class="inventory-slot"></div>
+            <div class="inventory-slot"></div>
+            <div class="inventory-slot"></div>
+            <div class="inventory-slot"></div>
+        </div>
+        </div>
+        <img src="backpack.webp" id="inventory">
     </nav>
     <div id="health-bar"></div>
 
     <!--Menu Screen-->
 
-<div id="menu" class="page overlay">
+    <div id="menu" class="page overlay">
         <h1>Mystic Realms</h1>
         <div id="menu-container" class="container">
             <button id="play-btn" class="btn" onclick="showPage('ordinary-world')">Play</button>
@@ -38,53 +38,57 @@
 
     <div id="ordinary-world" class="page" style="display: none;">
         <canvas id="gameCanvas" width="800" height="600"></canvas>
-        <div id="story-box">You take a stroll through the Hush Forest...</div>
-        <div id="story-box">You notice a cave that shouldn't be there as you've hiked through that forest since you were a kid.</div>
-         <img src="cave_entrance.webp" id="Hush-cave" width="500" onclick="showPage('Hush-cave')">
+        <div id="story-box">
+            <p>You take a stroll through the Hush Forest...</p>
+            <p>You notice a cave that shouldn't be there as you've hiked through that forest since you were a kid.</p>
+        </div>
+        <img src="cave_entrance.webp" id="Hush-cave" width="500" onclick="showPage('game-screen-2')">
     </div>
     <div id="cave" class="page" style="display: none;">
-    <h1 class="cave-title">Hush Cave</h1>
+        <h1 class="cave-title">Hush Cave</h1>
 
-    <div id="game-screen-2" style="display: none;">
-        <canvas id="gameCanvas" width="800" height="600"></canvas>
-        <div id="story-box">You enter the cave, and as you walk further, you find an old chest.</div>
-    </div>
+        <div id="game-screen-2" style="display: none;">
+            <canvas id="gameCanvas" width="800" height="600"></canvas>
+            <div id="story-box-3">You enter the cave, and as you walk further, you find an old chest.</div>
+        </div>
 
-    <div id="chest">
-        <canvas id="gameCanvas" width="800" height="600"></canvas>
-        <div id="item-description">You found a chestplate!</div>
-        <div id="item-description">Seems to be in good condition...</div>
-        <div id="item-description">How did it end up in a cave?</div>
-    </div>
+        <div id="chest">
+            <canvas id="gameCanvas" width="800" height="600"></canvas>
+            <div id="item-description">You found a chestplate!</div>
+            <div id="item-description">Seems to be in good condition...</div>
+            <div id="item-description">How did it end up in a cave?</div>
+        </div>
 
-    <p>Touch the stone?</p>
-    <button id="choice-1a">Yes</button>
-    <button id="choice-1b">No</button>
+        <p>Touch the stone?</p>
+        <button id="choice-1a">Yes</button>
+        <button id="choice-1b">No</button>
 
-    <div id="game-screen-3" style="display: none;">
-        <canvas id="gameCanvas" width="800" height="600"></canvas>
-        <div id="story-box">You touch the stone. Suddenly, you are hit with a bright flash of light.</div>
-        <div id="story-box">As the light begins to fade, and you regain your vision, nothing seemed to change. You exit the cave...</div>
-    </div>
+        <div id="game-screen-3" style="display: none;">
+            <canvas id="gameCanvas" width="800" height="600"></canvas>
+            <div id="story-box-4">You touch the stone. Suddenly, you are hit with a bright flash of light.</div>
+            <div id="story-box-5">As the light begins to fade, and you regain your vision, nothing seemed to change. You
+                exit the cave...</div>
+        </div>
 
-    <div id="game-screen-4" style="display: none;">
-        <canvas id="gameCanvas" width="800" height="600"></canvas>
-        <div id="story-box">You step through a portal and find yourself in a strange, vibrant world...</div>
-        <div id="story-box">The air feels different, and the sky is painted with colors you've never seen before.</div>
-        <button id="special-world-btn" class="btn" onclick="showPage('special-world')">Enter Special World</button>
-    </div>
-
-    <div id="special-world" class="page" style="display: none;">
-        <div id="health_bar">
-                
-                
+        <div id="game-screen-4" style="display: none;">
+            <canvas id="gameCanvas" width="800" height="600"></canvas>
+            <div id="story-box">You step through a portal and find yourself in a strange, vibrant world...</div>
+            <div id="story-box">The air feels different, and the sky is painted with colors you've never seen before.
             </div>
-                <div id="game-screen" style="display: none;">
+            <button id="special-world-btn" class="btn" onclick="showPage('special-world')">Enter Special World</button>
+        </div>
+
+        <div id="special-world" class="page" style="display: none;">
+            <div id="health_bar">
+
+
+            </div>
+            <div id="game-screen" style="display: none;">
                 <canvas id="gameCanvas" width="800" height="600"></canvas>
                 <div id="story-box">"Where am I?"</div>
                 <div id="story-box">This isn't the forest.</div>
             </div>
-                    <div id="game-screen" style="display: none;">
+            <div id="game-screen" style="display: none;">
                 <canvas id="gameCanvas" width="800" height="600"></canvas>
                 <div id="story-box">"All charges used, catalyst empty, now self destructing in 10 seconds."</div>
             </div>
@@ -92,121 +96,127 @@
             <p>Boulder or Tree?</p>
             <button id="choice_2a">Boulder</button>
             <button id="choice_2b">Tree</button>
-                        <div id="game-screen" style="display: none;">
+            <div id="game-screen" style="display: none;">
                 <canvas id="gameCanvas" width="800" height="600"></canvas>
                 <div id="story-box">You choose to hide behind the boulder...</div>
-                <div id="story-box">The stone explodes, but the boulder provides protection, so you survive unscathed.</div>
+                <div id="story-box">The stone explodes, but the boulder provides protection, so you survive unscathed.
+                </div>
             </div>
-                            <div id="game-screen" style="display: none;">
+            <div id="game-screen" style="display: none;">
                 <canvas id="gameCanvas" width="800" height="600"></canvas>
-                <div id="story-box">As you look to where the stone once was, you see something shine on the ground, a sword.</div>
+                <div id="story-box">As you look to where the stone once was, you see something shine on the ground, a
+                    sword.</div>
             </div>
             <p>Pick up the Sword?</p>
             <button id="choice_3a">Yes</button>
             <button id="choice_3b">No</button>
         </div>
 
-    
+
     </div> <!-- end of the Hush cave -->
 
-<div id="forest-2" class="page" style="display: none;">
-<div id="health_bar">
-        
-        
-    </div>
-    <div id="game-screen" style="display: none;">
-        <canvas id="gameCanvas" width="800" height="600"></canvas>
-        <div id="story-box">You pick up the sword and head off in search of a way out of this strange world.</div>
-        <div id="story-box">After a while, you spot a large cave in the distance.</div>
-    </div>
-</div>
+    <div id="forest-2" class="page" style="display: none;">
+        <div id="health_bar">
 
-<div id="mighty-caverns" class="page" style="display: none;">
-<div id="health_bar">
-        
-        
-    </div>
-    <div id="game-screen" style="display: none;">
-        <canvas id="gameCanvas" width="800" height="600"></canvas>
-        <div id="story-box">You make to the cave.</div>
-        <div id="story-box">After some time, you find a chest similar to the one you saw where you found the chestplate.</div>
-    </div>
-    <div id="chest">
-        <canvas id="gameCanvas" width="800" height="600"></canvas>
-        <div id="item_description">You found a health potion!</div>
-        <div id="item_description">Your health has been fully restored!</div>
-    <div id="item_description"></div>
-</div>
-</div>
 
-<div id="special-world" class="page" style="display: none;">
-<div id="health_bar">
-        
-        
-    </div>
+        </div>
         <div id="game-screen" style="display: none;">
-        <canvas id="gameCanvas" width="800" height="600"></canvas>
-        <div id="story-box">"Where am I?"</div>
-        <div id="story-box">This isn't the forest.</div>
+            <canvas id="gameCanvas" width="800" height="600"></canvas>
+            <div id="story-box">You pick up the sword and head off in search of a way out of this strange world.</div>
+            <div id="story-box">After a while, you spot a large cave in the distance.</div>
+        </div>
     </div>
-            <div id="game-screen" style="display: none;">
-        <canvas id="gameCanvas" width="800" height="600"></canvas>
-        <div id="story-box">"All charges used, catalyst empty, now self destructing in 10 seconds."</div>
-    </div>
-    <div id="timer"></div>
-    <p>Boulder or Tree?</p>
-    <button id="choice_2a">Boulder</button>
-    <button id="choice_2b">Tree</button>
-                <div id="game-screen" style="display: none;">
-        <canvas id="gameCanvas" width="800" height="600"></canvas>
-        <div id="story-box">You choose to hide behind the boulder...</div>
-        <div id="story-box">The stone explodes, but the boulder provides protection, so you survive unscathed.</div>
-    </div>
-                    <div id="game-screen" style="display: none;">
-        <canvas id="gameCanvas" width="800" height="600"></canvas>
-        <div id="story-box">As you look to where the stone once was, you see something shine on the ground, a sword.</div>
-    </div>
-    <p>Pick up the Sword?</p>
-    <button id="choice_3a">Yes</button>
-    <button id="choice_3b">No</button>
-</div>
 
-<div id="good-ending" class="page" style="display: none;">
-    <h1 class="good_ending">Good ending</h1>
-    <p>You've defeated the dragon and returned home.</p>
-    <p>Thank you for playing!</p>
-    <button id="return-btn" onclick="showPage('menu')">Return to Title Screen</button>
-    <button id="exit">Exit</button>
-</div>
+    <div id="mighty-caverns" class="page" style="display: none;">
+        <div id="health_bar">
 
-<div id="bad-ending" class="page" style="display: none;">
-    <div id="game-screen" style="display: none;">
-        <canvas id="gameCanvas" width="800" height="600"></canvas>
-        <div id="story-box">You choose to climb up the tree.</div>
-        <div id="story-box">Instead of protecting you, the explosion from the stone sets the tree on fire, taking you with it.</div>
-    </div>
-    <h1 id="bad-ending">Bad Ending</h1>
-    <button id="return-btn" onclick="showPage('menu')">Return to Title Screen</button>
-    <button id="exit">Exit</button>
-</div>
 
-<div id="secret-ending" class="page" style="display: none;">
-    <div id="image"></div>
-    <img src="portal.gif" id="gif" height="500">
-    <div id="game-screen" style="display: none;">
-        <canvas id="gameCanvas" width="800" height="600"></canvas>
-        <div id="story-box">As you go through the Mighty Caverns, fending off monsters, you find a door tucked away in a corner.</div>
-        <div id="story-box">You enter and find a purple portal.</div>
+        </div>
+        <div id="game-screen" style="display: none;">
+            <canvas id="gameCanvas" width="800" height="600"></canvas>
+            <div id="story-box">You make to the cave.</div>
+            <div id="story-box">After some time, you find a chest similar to the one you saw where you found the
+                chestplate.</div>
+        </div>
+        <div id="chest">
+            <canvas id="gameCanvas" width="800" height="600"></canvas>
+            <div id="item_description">You found a health potion!</div>
+            <div id="item_description">Your health has been fully restored!</div>
+            <div id="item_description"></div>
+        </div>
     </div>
-    <div id="game-screen" style="display: none;">
-        <canvas id="gameCanvas" width="800" height="600"></canvas>
-        <div id="story-box">"What is that? Wait..."</div>
-        <div id="story-box">"Could it be? A way out!?"</div>
+
+    <div id="special-world" class="page" style="display: none;">
+        <div id="health_bar">
+
+
+        </div>
+        <div id="game-screen" style="display: none;">
+            <canvas id="gameCanvas" width="800" height="600"></canvas>
+            <div id="story-box">"Where am I?"</div>
+            <div id="story-box">This isn't the forest.</div>
+        </div>
+        <div id="game-screen" style="display: none;">
+            <canvas id="gameCanvas" width="800" height="600"></canvas>
+            <div id="story-box">"All charges used, catalyst empty, now self destructing in 10 seconds."</div>
+        </div>
+        <div id="timer"></div>
+        <p>Boulder or Tree?</p>
+        <button id="choice_2a">Boulder</button>
+        <button id="choice_2b">Tree</button>
+        <div id="game-screen" style="display: none;">
+            <canvas id="gameCanvas" width="800" height="600"></canvas>
+            <div id="story-box">You choose to hide behind the boulder...</div>
+            <div id="story-box">The stone explodes, but the boulder provides protection, so you survive unscathed.</div>
+        </div>
+        <div id="game-screen" style="display: none;">
+            <canvas id="gameCanvas" width="800" height="600"></canvas>
+            <div id="story-box">As you look to where the stone once was, you see something shine on the ground, a sword.
+            </div>
+        </div>
+        <p>Pick up the Sword?</p>
+        <button id="choice_3a">Yes</button>
+        <button id="choice_3b">No</button>
     </div>
-    <h1 id="secret-ending">Secret Ending</h1>
-    <button id="return-btn" onclick="showPage('menu')">Return to Title Screen</button>
-    <button id="exit">Exit</button>
-</div>
+
+    <div id="good-ending" class="page" style="display: none;">
+        <h1 class="good_ending">Good ending</h1>
+        <p>You've defeated the dragon and returned home.</p>
+        <p>Thank you for playing!</p>
+        <button id="return-btn" onclick="showPage('menu')">Return to Title Screen</button>
+        <button id="exit">Exit</button>
+    </div>
+
+    <div id="bad-ending" class="page" style="display: none;">
+        <div id="game-screen" style="display: none;">
+            <canvas id="gameCanvas" width="800" height="600"></canvas>
+            <div id="story-box">You choose to climb up the tree.</div>
+            <div id="story-box">Instead of protecting you, the explosion from the stone sets the tree on fire, taking
+                you with it.</div>
+        </div>
+        <h1 id="bad-ending">Bad Ending</h1>
+        <button id="return-btn" onclick="showPage('menu')">Return to Title Screen</button>
+        <button id="exit">Exit</button>
+    </div>
+
+    <div id="secret-ending" class="page" style="display: none;">
+        <div id="image"></div>
+        <img src="portal.gif" id="gif" height="500">
+        <div id="game-screen" style="display: none;">
+            <canvas id="gameCanvas" width="800" height="600"></canvas>
+            <div id="story-box">As you go through the Mighty Caverns, fending off monsters, you find a door tucked away
+                in a corner.</div>
+            <div id="story-box">You enter and find a purple portal.</div>
+        </div>
+        <div id="game-screen" style="display: none;">
+            <canvas id="gameCanvas" width="800" height="600"></canvas>
+            <div id="story-box">"What is that? Wait..."</div>
+            <div id="story-box">"Could it be? A way out!?"</div>
+        </div>
+        <h1 id="secret-ending">Secret Ending</h1>
+        <button id="return-btn" onclick="showPage('menu')">Return to Title Screen</button>
+        <button id="exit">Exit</button>
+    </div>
 
 </body>
 

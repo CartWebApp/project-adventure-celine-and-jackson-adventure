@@ -66,7 +66,7 @@ function showPage(pageId) {
     const bgImages = {
         'menu': 'url(Home-menu_screen.jpg)',
         'ordinary-world': 'url(Ordinary_world.jpg)',
-        'Hush-cave': 'url(cave.png)'
+        'game-screen-2': 'url(cave.png)'
        
     };
     document.body.style.backgroundImage = bgImages[pageId] || 'url(Home-menu_screen.jpg)';
@@ -134,6 +134,6 @@ document.addEventListener('keydown', (event) => {
 // inventory slots
 
 
-// Cave Entrance
+
 
 
