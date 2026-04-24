@@ -135,6 +135,5 @@ document.addEventListener('keydown', (event) => {
 // inventory slots
 
 
-// Cave Entrance
 
 

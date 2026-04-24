@@ -166,8 +166,18 @@ body {
     }
 } */
 
-#cave {
+#Hush-cave {
     /* animation-name: slide;
     animation-duration: 10s; */
-    transform: translate(335%, 20%);
+    transform: translate(335%, 26%);
+}
+
+#story-box {
+    z-index: 100;
+    position: absolute;
+    width: 50%;
+    height: 40%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
 }
