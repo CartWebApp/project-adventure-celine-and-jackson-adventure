@@ -66,7 +66,8 @@ function showPage(pageId) {
     const bgImages = {
         'menu': 'url(Home-menu_screen.jpg)',
         'ordinary-world': 'url(Ordinary_world.jpg)',
-       'inventory': 'url()'
+        'Hush-cave': 'url(cave.png)'
+       
     };
     document.body.style.backgroundImage = bgImages[pageId] || 'url(Home-menu_screen.jpg)';
 
@@ -123,10 +124,16 @@ function updateInventoryUI() {
 
 // Toggle inventory display
 document.addEventListener('keydown', (event) => {
-    if (event.key === 'i') { // Press 'E' to open inventory
+    if (event.key === 'E') { // Press 'E' to open inventory
         const inventoryContainer = document.getElementById('inventory-container');
         inventoryContainer.style.display = inventoryContainer.style.display === 'none' ? 'block' : 'none';
     }
     
 });
+
+// inventory slots
+
+
+// Cave Entrance
+
 
