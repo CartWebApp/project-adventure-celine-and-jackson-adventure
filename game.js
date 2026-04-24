@@ -66,7 +66,8 @@ function showPage(pageId) {
     const bgImages = {
         'menu': 'url(Home-menu_screen.jpg)',
         'ordinary-world': 'url(Ordinary_world.jpg)',
-       'inventory': 'url()'
+        'Hush-cave': 'url(cave.png)'
+       
     };
     document.body.style.backgroundImage = bgImages[pageId] || 'url(Home-menu_screen.jpg)';
 
@@ -85,9 +86,10 @@ window.addEventListener('load', () => {
     showPage('menu');
 });
 
+//Inventory
 const inventory = [];
 
-// Add item to inventory
+
 function addItem(item) {
     const existingItem = inventory.find(i => i.name === item.name);
     if (existingItem) {
@@ -98,7 +100,7 @@ function addItem(item) {
     updateInventoryUI();
 }
 
-// Remove item from inventory
+
 function removeItem(itemName, quantity = 1) {
     const itemIndex = inventory.findIndex(i => i.name === itemName);
     if (itemIndex !== -1) {
@@ -110,7 +112,7 @@ function removeItem(itemName, quantity = 1) {
     updateInventoryUI();
 }
 
-// Update inventory UI
+
 function updateInventoryUI() {
     const inventoryContainer = document.getElementById('inventory-container');
     inventoryContainer.innerHTML = ''; 
@@ -121,12 +123,18 @@ function updateInventoryUI() {
     });
 }
 
-// Toggle inventory display
+
 document.addEventListener('keydown', (event) => {
-    if (event.key === 'i') { // Press 'E' to open inventory
+    if (event.key === 'e') { 
         const inventoryContainer = document.getElementById('inventory-container');
         inventoryContainer.style.display = inventoryContainer.style.display === 'none' ? 'block' : 'none';
     }
     
 });
+
+// inventory slots
+
+
+// Cave Entrance
+
 

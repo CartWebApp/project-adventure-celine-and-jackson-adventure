@@ -156,3 +156,18 @@ body {
     width: 30px;
     height: 30px;
 }
+
+/* @keyframes slide {
+    0% {
+        transform: translate(500%, 20%);
+    }
+    100% {
+        transform:translateX(-1%);
+    }
+} */
+
+#cave {
+    /* animation-name: slide;
+    animation-duration: 10s; */
+    transform: translate(335%, 20%);
+}
