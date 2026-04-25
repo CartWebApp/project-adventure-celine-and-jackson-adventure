@@ -64,9 +64,8 @@
 
         <div id="game-screen-3" style="display: none;">
             <canvas id="gameCanvas" width="800" height="600"></canvas>
-            <div id="story-box-4">You touch the stone. Suddenly, you are hit with a bright flash of light.</div>
-            <div id="story-box-5">As the light begins to fade, and you regain your vision, nothing seemed to change. You
-                exit the cave...</div>
+            <div id="story-box-4"></div>
+            <div id="story-box-5"></div>
         </div>
 
         <div id="game-screen-4" style="display: none;">
@@ -84,31 +83,30 @@
             </div>
             <div id="game-screen" style="display: none;">
                 <canvas id="gameCanvas" width="800" height="600"></canvas>
-                <div id="story-box">"Where am I?"</div>
-                <div id="story-box">This isn't the forest.</div>
+                <div id="story-box"></div>
+                <div id="story-box"></div>
             </div>
             <div id="game-screen" style="display: none;">
                 <canvas id="gameCanvas" width="800" height="600"></canvas>
-                <div id="story-box">"All charges used, catalyst empty, now self destructing in 10 seconds."</div>
+                <div id="story-box"></div>
             </div>
             <div id="timer"></div>
-            <p>Boulder or Tree?</p>
-            <button id="choice_2a">Boulder</button>
-            <button id="choice_2b">Tree</button>
+            <p></p>
+            <button id="choice_2a"></button>
+            <button id="choice_2b"></button>
             <div id="game-screen" style="display: none;">
                 <canvas id="gameCanvas" width="800" height="600"></canvas>
-                <div id="story-box">You choose to hide behind the boulder...</div>
-                <div id="story-box">The stone explodes, but the boulder provides protection, so you survive unscathed.
+                <div id="story-box"></div>
+                <div id="story-box">
                 </div>
             </div>
             <div id="game-screen" style="display: none;">
                 <canvas id="gameCanvas" width="800" height="600"></canvas>
-                <div id="story-box">As you look to where the stone once was, you see something shine on the ground, a
-                    sword.</div>
+                <div id="story-box"></div>
             </div>
-            <p>Pick up the Sword?</p>
-            <button id="choice_3a">Yes</button>
-            <button id="choice_3b">No</button>
+
+            <button id="choice_3a"></button>
+            <button id="choice_3b"></button>
         </div>
 
 
@@ -147,38 +145,10 @@
 
 
         </div>
-        <div id="game-screen" style="display: none;">
-            <canvas id="gameCanvas" width="800" height="600"></canvas>
-            <div id="story-box">"Where am I?"</div>
-            <div id="story-box">This isn't the forest.</div>
-        </div>
-        <div id="game-screen" style="display: none;">
-            <canvas id="gameCanvas" width="800" height="600"></canvas>
-            <div id="story-box">"All charges used, catalyst empty, now self destructing in 10 seconds."</div>
-        </div>
-        <div id="timer"></div>
-        <p>Boulder or Tree?</p>
-        <button id="choice_2a">Boulder</button>
-        <button id="choice_2b">Tree</button>
-        <div id="game-screen" style="display: none;">
-            <canvas id="gameCanvas" width="800" height="600"></canvas>
-            <div id="story-box">You choose to hide behind the boulder...</div>
-            <div id="story-box">The stone explodes, but the boulder provides protection, so you survive unscathed.</div>
-        </div>
-        <div id="game-screen" style="display: none;">
-            <canvas id="gameCanvas" width="800" height="600"></canvas>
-            <div id="story-box">As you look to where the stone once was, you see something shine on the ground, a sword.
-            </div>
-        </div>
-        <p>Pick up the Sword?</p>
-        <button id="choice_3a">Yes</button>
-        <button id="choice_3b">No</button>
-    </div>
+
 
     <div id="good-ending" class="page" style="display: none;">
         <h1 class="good_ending">Good ending</h1>
-        <p>You've defeated the dragon and returned home.</p>
-        <p>Thank you for playing!</p>
         <button id="return-btn" onclick="showPage('menu')">Return to Title Screen</button>
         <button id="exit">Exit</button>
     </div>
@@ -186,9 +156,8 @@
     <div id="bad-ending" class="page" style="display: none;">
         <div id="game-screen" style="display: none;">
             <canvas id="gameCanvas" width="800" height="600"></canvas>
-            <div id="story-box">You choose to climb up the tree.</div>
-            <div id="story-box">Instead of protecting you, the explosion from the stone sets the tree on fire, taking
-                you with it.</div>
+            <div id="story-box"></div>
+            <div id="story-box"></div>
         </div>
         <h1 id="bad-ending">Bad Ending</h1>
         <button id="return-btn" onclick="showPage('menu')">Return to Title Screen</button>
@@ -200,14 +169,13 @@
         <img src="portal.gif" id="gif" height="500">
         <div id="game-screen" style="display: none;">
             <canvas id="gameCanvas" width="800" height="600"></canvas>
-            <div id="story-box">As you go through the Mighty Caverns, fending off monsters, you find a door tucked away
-                in a corner.</div>
-            <div id="story-box">You enter and find a purple portal.</div>
+            <div id="story-box"></div>
+            <div id="story-box"></div>
         </div>
         <div id="game-screen" style="display: none;">
             <canvas id="gameCanvas" width="800" height="600"></canvas>
-            <div id="story-box">"What is that? Wait..."</div>
-            <div id="story-box">"Could it be? A way out!?"</div>
+            <div id="story-box"></div>
+            <div id="story-box"></div>
         </div>
         <h1 id="secret-ending">Secret Ending</h1>
         <button id="return-btn" onclick="showPage('menu')">Return to Title Screen</button>
