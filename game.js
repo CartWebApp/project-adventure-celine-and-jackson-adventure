@@ -1,3 +1,5 @@
+
+
 // health bar //
 let maxHealth = 100;
 let currentHealth = 100;
@@ -71,7 +73,8 @@ function showPage(pageId) {
     };
     document.body.style.backgroundImage = bgImages[pageId] || 'url(Home-menu_screen.jpg)';
 
-    // Animated story text //
+    // Animated story text 
+   
     setTimeout(() => {
         const page = document.getElementById(pageId);
         const storyBoxes = page.querySelectorAll('#story-box');
@@ -133,7 +136,6 @@ document.addEventListener('keydown', (event) => {
 });
 
 // inventory slots
-
 
 
 

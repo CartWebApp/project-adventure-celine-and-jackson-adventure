@@ -83,3 +83,42 @@ const story = {
         text: "'Could it be? A way out!?'",
     }
 }
+
+let box = document.getElementById('story-box');
+let choice = document.getElementById('choice');
+let story = ["intro"];
+
+function choiceBtn (choiceText, choose) {
+    let btn = document .createElement("btn");
+
+    btn.innerHTML = choiceText;
+    choice.appendChild(btn);
+
+    btn.addEventListener("click", function() {
+        story.push(choose);
+        displaystory();
+    });
+}
+
+function createStory(text) {
+    let Item = document.createElement("p");
+
+    Item.innerText = text;
+
+    box.appendChild(Item);
+}
+
+function displaystory() {
+    let currentText = story[story.length - 1];
+    
+    box.innerHTML = "";
+    choice.innerHTML = "";
+
+    for(let part of story) {
+        createStory(storyLine[part].text);
+    }
+
+    for(let decision of storyLine[chosen].choices) {
+        choiceBtn(decision[0], decision[1]);
+    }
+}
