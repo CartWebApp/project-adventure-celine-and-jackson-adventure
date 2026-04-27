@@ -86,7 +86,7 @@ const story = {
 
 let box = document.getElementById('story-box');
 let choice = document.getElementById('choice');
-let story = ["intro"];
+let storyLine = ["intro"];
 
 function choiceBtn (choiceText, choose) {
     let btn = document .createElement("btn");
@@ -109,16 +109,18 @@ function createStory(text) {
 }
 
 function displaystory() {
-    let currentText = story[story.length - 1];
+    let currentText = storyLine[storyLine.length - 1];
     
     box.innerHTML = "";
     choice.innerHTML = "";
 
-    for(let part of story) {
-        createStory(storyLine[part].text);
+    for(let part of storyLine) {
+        createStory(story[part].text);
     }
 
-    for(let decision of storyLine[chosen].choices) {
+    for(let decision of story[currentText].choices) {
         choiceBtn(decision[0], decision[1]);
     }
 }
+
+displaystory();
