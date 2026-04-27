@@ -11,12 +11,14 @@
 
 const story = {
     intro: {
+
         text: "You take a stroll through the Hush Forest...",
         text: "You notice a cave that shouldn't be there as you've hiked through that forest since you were a kid.",
         background: "ordinary_world.jpg"
     },
 
     cave: {
+
         text: "You enter the cave, and as you walk further, you find an old chest.",
 
         text: "As you traverse further into the cave, you encounter a mysterious stone",
@@ -29,6 +31,7 @@ const story = {
     },
 
     touch: {
+
         text: "You touch the stone. Suddenly, you are hit with a bright flash of light.",
         text: "As the light begins to fade, and you regain your vision, nothing seemed to change. You exit the cave...",
         text: "'Where am I?'",
@@ -45,6 +48,7 @@ const story = {
     },
 
     Boulder: {
+
         text: "You choose to hide behind the boulder...",
         text: "The stone explodes, but the boulder provides protection, so you survive unscathed.",
         text: "As you look to where the stone once was, you see something shine on the ground, a sword.",
@@ -58,6 +62,7 @@ const story = {
 
    
     Pickup: {
+
         text: "You pick up the sword and head off in search of a way out of this strange world.",
         text: "After a while, you spot a large cave in the distance.",
 
@@ -67,20 +72,24 @@ const story = {
     },
 
     GoodEnding: {
+
         text: "You've defeated the dragon and returned home.",
         text: "Thank you for playing!",
     },
 
     Tree: {
+
             text: "You choose to climb up the tree.",
             text: "Instead of protecting you, the explosion from the stone sets the tree on fire, taking you with it.",
         },
 
     SecretEnding: {
+
         text: "As you go through the Mighty Caverns, fending off monsters, you find a door tucked away in a corner.",
         text: "You enter and find a purple portal.",
         text: "'What is that? Wait...'",
         text: "'Could it be? A way out!?'",
+        choices: []
     }
 }
 
@@ -95,7 +104,7 @@ function choiceBtn (choiceText, choose) {
     choice.appendChild(btn);
 
     btn.addEventListener("click", function() {
-        story.push(choose);
+        storyLine.push(choose);
         displaystory();
     });
 }
