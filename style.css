@@ -136,6 +136,10 @@ body {
     border-radius: 5px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     background-color: rgba(0, 0, 0, 0.8);
+    background-image: url('backpack.webp');
+    background-size: 89px;
+    display: flex;
+    Justify-content:flex-end;
 }
 
 #inventory-container {

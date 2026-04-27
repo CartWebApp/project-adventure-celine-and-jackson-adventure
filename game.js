@@ -74,7 +74,7 @@ function showPage(pageId) {
     document.body.style.backgroundImage = bgImages[pageId] || 'url(Home-menu_screen.jpg)';
 
     // Animated story text 
-   
+   displaystory();
     setTimeout(() => {
         const page = document.getElementById(pageId);
         const storyBoxes = page.querySelectorAll('#story-box');

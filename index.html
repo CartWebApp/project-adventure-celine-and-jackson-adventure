@@ -14,13 +14,7 @@
     <nav id="inventory-container">
         <div id="inventory">
                 <div class="inventory-slot"></div>
-                <div class="inventory-slot"></div>
-                <div class="inventory-slot"></div>
-                <div class="inventory-slot"></div>
-                <div class="inventory-slot"></div>
             </div>
-        </div> 
-    <img src="backpack.webp" id="inventory">
     </nav>
     <div id="health-bar"></div>
 
@@ -39,24 +33,18 @@
 
     <div id="ordinary-world" class="page" style="display: none;">
         <canvas id="gameCanvas" width="800" height="600"></canvas>
-        <div id="story-box">
-        </div>
-        <img src="cave_entrance.webp" id="Hush-cave" width="500" onclick="showPage('game-screen-2')">
+            <div id="story-box"></div>
+        <img src="cave_entrance.webp" alt="cave" id="Hush-cave" width="500" onclick="showPage('game-screen-2')">
     </div>
 
     <div id="cave" class="page" style="display: none;">
         <h1 class="cave-title">Hush Cave</h1>
 
         <div id="game-screen-2" style="display: none;">
-            <canvas id="gameCanvas" width="800" height="600"></canvas>
-            <div id="story-box"></div>
-        </div>
 
         <div id="chest">
-            <canvas id="gameCanvas" width="800" height="600"></canvas>
-            <div id="item-description">You found a chestplate!</div>
-            <div id="item-description">Seems to be in good condition...</div>
-            <div id="item-description">How did it end up in a cave?</div>
+
+            <div id="item-description">You found a chestplate! Seems to be in good condition... How did it end up in a cave?</div>
         </div>
 
         <p>Touch the stone?</p>
@@ -64,14 +52,13 @@
 
         <div id="game-screen-4" style="display: none;">
             <canvas id="gameCanvas" width="800" height="600"></canvas>
-            <div id="story-box">You step through a portal and find yourself in a strange, vibrant world...</div>
-            <div id="story-box">The air feels different, and the sky is painted with colors you've never seen before.
+            <div id="story-box">You step through a portal and find yourself in a strange, vibrant world... The air feels different, and the sky is painted with colors you've never seen before.</div>
             </div>
             <button id="special-world-btn" class="btn" onclick="showPage('special-world')">Enter Special World</button>
         </div>
 
         <div id="special-world" class="page" style="display: none;">
-            <div id="health_bar">
+
 
 
             </div>
@@ -85,30 +72,29 @@
     </div> <!-- end of the Hush cave -->
 
     <div id="forest-2" class="page" style="display: none;">
-        <div id="health_bar">
+
 
 
 <div id="special-world" class="page" style="display: none;">
-<div id="health_bar">
+
               
     </div>
 
     <div id="mighty-caverns" class="page" style="display: none;">
-        <div id="health_bar">
+
 
 
         </div>
 
-        <div id="chest">
-            <canvas id="gameCanvas" width="800" height="600"></canvas>
-            <div id="item_description">You found a health potion!</div>
-            <div id="item_description">Your health has been fully restored!</div>
-            <div id="item_description"></div>
-        </div>
+
+
+            <div id="item_description">You found a health potion! Your health has been fully restored!</div>
+
+
     </div>
 
     <div id="special-world" class="page" style="display: none;">
-        <div id="health_bar">
+
 
 
         </div>

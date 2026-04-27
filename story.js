@@ -12,9 +12,11 @@
 const story = {
     intro: {
 
-        text: "You take a stroll through the Hush Forest...",
-        text: "You notice a cave that shouldn't be there as you've hiked through that forest since you were a kid.",
-        background: "ordinary_world.jpg"
+        text: ["You take a stroll through the Hush Forest...","You notice a cave that shouldn't be there as you've hiked through that forest since you were a kid."],
+        background: "ordinary_world.jpg",
+        choices: [
+            {text: "Enter Cave", next: "cave"}
+        ]
     },
 
     cave: {
@@ -112,13 +114,15 @@ function choiceBtn (choiceText, choose) {
 function createStory(text) {
     let Item = document.createElement("p");
 
-    Item.innerText = text;
-
+    for(let part of text) {
+    Item.innerText += part;
+}
     box.appendChild(Item);
 }
 
 function displaystory() {
     let currentText = storyLine[storyLine.length - 1];
+    console.log(currentText,story[currentText]);
     
     box.innerHTML = "";
     choice.innerHTML = "";
