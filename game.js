@@ -1,4 +1,4 @@
-
+const textBox = document.getElementById('gameCanvas');
 
 // health bar //
 let maxHealth = 100;
@@ -137,5 +137,114 @@ document.addEventListener('keydown', (event) => {
 
 // inventory slots
 
+addItem(item);
+removeItem(itemName, 1);
+
+// Pixel Character
+const canvas = document.querySelector('canvas');
+const ctx = canvas.getContext('2d');
+const sprite = new Image ();
+sprite.src = 'Ready for Export.png'; 
 
 
+const SPRITE_SIZE = 32; 
+const SCALE = 2.5;
+const ANIMATION_SPEED = 8; 
+
+
+const player = {
+    x: 50,
+    y: 150,
+    width: SPRITE_SIZE * SCALE,
+    height: SPRITE_SIZE * SCALE,
+    frameX: 0,
+    frameY: 0,      
+    gameFrame: 0,
+    speed: 5,
+    moving: false,
+    facing: 1       
+};
+
+
+const keys = {};
+window.addEventListener('keydown', e => keys[e.code] = true);
+window.addEventListener('keyup', e => keys[e.code] = false);
+
+function handleInput() {
+    player.moving = false;
+
+    if (keys['KeyD']) {
+        player.x += player.speed;
+        player.facing = 1;
+        player.moving = true;
+        player.frameY = 1; 
+    } else if (keys['KeyA']) {
+        player.x -= player.speed;
+        player.facing = -1;
+        player.moving = true;
+        player.frameY = 1;
+    } else {
+        player.frameY = 0; 
+    }
+    if (keys['KeyRight']) {
+        player.x += player.speed;
+        player.facing = 1;
+        player.moving = true;
+        player.frameY = 1;
+    } else if (keys['KeyLeft']) {
+        player.x -= player.speed;
+        player.facing = -1;
+        player.moving = true;
+        player.frameY = 1;
+    } else {
+        player.frameY = 0;
+    }
+    if (keys['KeySpace']) {
+        player.y += player.speed;
+        player.moving = true;
+    } else {
+        player.frameX = 0;
+    }
+}
+
+
+function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    handleInput();
+
+    const maxFrames = (player.frameY === 0) ? 6 : 7;
+    
+    if (player.moving || player.frameY === 0) {
+        player.frameX = Math.floor(player.gameFrame / ANIMATION_SPEED) % maxFrames;
+        player.gameFrame++;
+    }
+
+
+    ctx.save();
+    if (player.facing === -1) {
+     
+        ctx.translate(player.x + player.width, player.y);
+        ctx.scale(-1, 1);
+        ctx.drawImage(
+            sprite,
+            player.frameX * SPRITE_SIZE, player.frameY * SPRITE_SIZE,
+            SPRITE_SIZE, SPRITE_SIZE,
+            0, 0,
+            player.width, player.height
+        );
+    } else {
+        ctx.drawImage(
+            sprite,
+            player.frameX * SPRITE_SIZE, player.frameY * SPRITE_SIZE,
+            SPRITE_SIZE, SPRITE_SIZE,
+            player.x, player.y,
+            player.width, player.height
+        );
+    }
+    ctx.restore();
+
+    requestAnimationFrame(animate);
+}
+
+sprite.onload = animate;
