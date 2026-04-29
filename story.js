@@ -17,6 +17,7 @@ const story = {
         choices: [
             {text: "Enter Cave", next: "cave"}
         ],
+        
         background: "ordinary_world.jpg"
     },
 
