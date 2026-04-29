@@ -1,13 +1,4 @@
-// const story = {
-//     intro: {
-//         text: "You wake up in a dark room. You can't remember how you got here. You see a door to your left and a window to your right.",
-//         choices: [
-//             { text: "Go through the door", next: "door" },
-//             { text: "Look out the window", next: "window" }
-//         ],
-//         background: "dark_room.jpg"   
-//     }
-// }
+
 
 const story = {
     intro: {
@@ -17,8 +8,7 @@ const story = {
         choices: [
             {text: "Enter Cave", next: "cave"}
         ],
-        
-        background: "ordinary_world.jpg"
+        background: "Images/ordinary_world.jpg"
     },
 
     cave: {
@@ -27,7 +17,7 @@ const story = {
         choices: [
             { text: "open", next: "open" }
         ],
-        background: "cave.png"
+        background: "Images/cave.png"
     },
 
     open: {
@@ -37,7 +27,7 @@ const story = {
             { text: "Yes", next: "touch" },
             { text: "No", next: "leave" }
         ],
-        background: "cave.png"      
+        background: "Images/cave.png"      
     },
 
     touch: {
@@ -54,10 +44,10 @@ const story = {
 
         text: ["You choose to hide behind the boulder...","The stone explodes, but the boulder provides protection, so you survive unscathed.","As you look to where the stone once was, you see something shine on the ground, a sword.","Pick up the Sword?"],
         choices: [
-            { text: "Yes", next: "Pickup" },
+            { text: "Yes", next: "Pickup", inventory: "Sword" },
             { text: "No", next: "Emptyhanded"}
         ],
-        background: "forest_landscape_2.jpg"        
+        background: "Images/forest_landscape_2.jpg"        
     },
 
    
@@ -67,21 +57,29 @@ const story = {
         choices: [
             { text: "set out on journey", next: "setout"}
         ],
-        background: "forest_landscape_2.jpg"
+        background: "Images/forest_landscape_2.jpg"
+    },
+    EmptyHanded: {
+
+        text: "You pick up the sword and head off in search of a way out of this strange world.", 
+        choices: [
+            { text: "set out on journey", next: "setout"}
+        ],
+        background: "Images/forest_landscape_2.jpg"
     },
     setout: {
         text: "After a while, you spot a large cave in the distance.",
         choices: [
             { text: "go to the cave", next: "cave_2" }
         ],
-        background: "forest_landscape.jpg"
+        background: "Images/forest_landscape.jpg"
     }, 
     cave_2: {
         text: ["You make it to the cave.","After some time, you find a chest similar to the one you saw where you found the chestplate."],
         choices: [
             { text: "open chest", next: "GoodEnding"}
         ],
-        background: "cave_2.png"
+        background: "Images/cave_2.png"
     },
 
     GoodEnding: {
@@ -112,50 +110,4 @@ const story = {
     }
 }
 
-let box = document.getElementById('story-box');
-let choice = document.getElementById('choice');
-let storyLine = ["intro"];
-
-function choiceBtn (choiceText, choose) {
-    let btn = document .createElement("button");
-
-    btn.className = "btn";
-
-    btn.innerHTML = choiceText;
-    choice.appendChild(btn);
-
-    btn.addEventListener("click", function() {
-        storyLine.push(choose);
-        displaystory();
-    });
-}
-
-function createStory(text) {
-    let Item = document.createElement("p");
-
-    for(let part of text) {
-    Item.innerText += part;
-}
-    box.appendChild(Item);
-}
-
-function displaystory() {
-    let currentScene = story.background;
-    let currentText = storyLine[storyLine.length - 1];
-    console.log(currentText,story[currentText]);
-
-    if (!currentScene) return;
-    
-    box.innerHTML = "";
-    choice.innerHTML = "";
-
-    for(let part of storyLine) {
-        createStory(story[part].text);
-    }
-
-    for(let decision of story[currentText].choices) {
-        choiceBtn(decision[0], decision[1]);
-    }
-}
-
-displaystory();
+export default story;

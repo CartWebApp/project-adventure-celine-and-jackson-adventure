@@ -6,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mystic Realms</title>
     <link rel="stylesheet" href="style.css">
-    <script src="game.js" defer></script>
-    <script src="story.js" defer></script>
+    <script type="module" src="game.js"></script>
 </head>
 
 <body>
@@ -31,82 +30,28 @@
                 <div class="inventory-slot" data-slot="8"></div>
                 <div class="inventory-slot" data-slot="9"></div>
             </div>
+        </div>
         <div id="inventory-tooltip">
             <div id="tooltip-name"></div>
             <div id="tooltip-desc"></div>
         </div>
     </nav>
-    <div id="health-bar"></div>
+    <div id="hud">
+        <button id="inventory-toggle" class="btn" type="button">Inventory</button>
+        <div id="health-bar"></div>
+    </div>
 
-    <!--Menu Screen-->
-
-    <div id="menu" class="page overlay">
+    <main id="menu" class="page">
         <h1>Mystic Realms</h1>
-        <div id="menu-container" class="container">
-            <button id="play-btn" class="btn" onclick="showPage('ordinary-world')">Play</button>
-            <button id="continue-btn" class="continue">Continue</button>
-            <button id="newgame-btn" class="btn" onclick="showPage('ordinary-world')">New Game</button>
-        </div>
-    </div>
+        <button class="btn" type="button" id="playBtn">Play</button>
+    </main>
 
-    <!-- Hush Forest/beginning of game-->
-
-    <div id="ordinary-world" class="page" style="display: none;">
-        <canvas id="gameCanvas" width="800" height="600"></canvas>
+    <main id="ordinary-world" class="page" style="display: none;">
+        <div id="storyContainer">
             <div id="story-box"></div>
-        <img src="Images/cave_entrance.webp" alt="cave" id="Hush-cave" width="500" onclick="showPage('game-screen-2')">
-    </div>
-
-    <div id="cave" class="page" style="display: none;">
-        <h1 class="cave-title">Hush Cave</h1>
-
-        <div id="game-screen-2" style="display: none;">
-
-        <div id="chest">
-
-            <div id="item-description">You found a chestplate! Seems to be in good condition... How did it end up in a cave?</div>
+            <div id="choice"></div>
         </div>
-
-        <p>Touch the stone?</p>
-        <button id="choice"></button>
-
-        <div id="game-screen-4" style="display: none;">
-><!--You step through a portal and find yourself in a strange, vibrant world... The air feels different, and the sky is painted with colors you've never seen before.-->
-            </div>
-            <button id="special-world-btn" class="btn" onclick="showPage('special-world')">Enter Special World</button>
-        </div>
-
-        <div id="special-world" class="page" style="display: none;">
-            </div>
-
-            <div id="timer"></div>
-    </div> <!-- end of the Hush cave -->
-
-    <div id="forest-2" class="page" style="display: none;">
-
-    <div id="mighty-caverns" class="page" style="display: none;">
-        </div>
-
-<!--You found a health potion! Your health has been fully restored!-->
-    </div>
-
-
-    <div id="good-ending" class="page" style="display: none;">
-        <h1>Good ending</h1>
-        <button id="return-btn" onclick="showPage('menu')">Return to Title Screen</button>
-        <button id="exit">Exit</button>
-    </div>
-
-    <div id="bad-ending" class="page" style="display: none;">
-        <h1>Bad Ending</h1>
-    </div>
-
-    <div id="secret-ending" class="page" style="display: none;">
-        <div id="image"></div>
-        <img src="Images/portal.gif" alt="portal" id="gif" height="500">
-
-        <h1>Secret Ending</h1>
-    </div>
+    </main>
 
 </body>
 

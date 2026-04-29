@@ -1,15 +1,13 @@
+import story from "./story.js";
+
 const textBox = document.getElementById('gameCanvas');
 
-// start Game //
-
-function startGame() {
-    showPage('ordinary-world');
-    document.getElementById('hud').style.display = 'flex';
-}
-
-// health bar //
-let maxHealth = 100;
-let currentHealth = 100;
+const SLOT_COUNT = 9;
+const player = {
+    health: 100,
+    maxHealth: 100,
+    inventory: Array(SLOT_COUNT).fill(null),
+};
 
 function updateHealthBar() {
     const healthBars = document.querySelectorAll('#health-bar, #health_bar');
@@ -20,7 +18,7 @@ function updateHealthBar() {
             fill.className = 'health-fill';
             bar.appendChild(fill);
         }
-        fill.style.width = (currentHealth / maxHealth) * 100 + '%';
+        fill.style.width = (player.health / player.maxHealth) * 100 + '%';
 
         let text = bar.querySelector('.health-text');
         if (!text) {
@@ -28,25 +26,23 @@ function updateHealthBar() {
             text.className = 'health-text';
             bar.appendChild(text);
         }
-        text.innerText = currentHealth + '/' + maxHealth;
+        text.innerText = player.health + '/' + player.maxHealth;
     });
 }
 
 function takeDamage(amount) {
-    currentHealth -= amount;
-    if (currentHealth < 0) currentHealth = 0;
+    player.health -= amount;
+    if (player.health < 0) player.health = 0;
     updateHealthBar();
 
-    if (currentHealth <= 0) {
-       
+    if (player.health <= 0) {
         console.log('Player died!');
-        
     }
 }
 
 function heal(amount) {
-    currentHealth += amount;
-    if (currentHealth > maxHealth) currentHealth = maxHealth;
+    player.health += amount;
+    if (player.health > player.maxHealth) player.health = player.maxHealth;
     updateHealthBar();
 }
 
@@ -73,15 +69,13 @@ function showPage(pageId) {
 
     
     const bgImages = {
-        'menu': 'url(Home-menu_screen.jpg)',
-        'ordinary-world': 'url(Ordinary_world.jpg)',
-        'Hush-cave': 'url(cave.png)'
-       
+        'menu': 'url("Images/Home-menu_screen.jpg")',
+        'ordinary-world': 'url("Images/Home-menu_screen.jpg")'
     };
-    document.body.style.backgroundImage = bgImages[pageId] || 'url(Home-menu_screen.jpg)';
+    document.body.style.backgroundImage = bgImages[pageId] || document.body.style.backgroundImage;
 
     // Animated story text 
-   displaystory();
+    displaystory();
     setTimeout(() => {
         const page = document.getElementById(pageId);
         const storyBoxes = page.querySelectorAll('#story-box');
@@ -92,13 +86,7 @@ function showPage(pageId) {
     }, 500);
 }
 
-window.addEventListener('load', () => {
-    showPage('menu');
-});
-
 //Inventory
-const SLOT_COUNT = 9;
-const slots = Array(SLOT_COUNT).fill(null);
 let inventoryOpen = false;
 let selectedSlot = -1;
 
@@ -115,29 +103,29 @@ function closeInventory() {
 }
 
 function addItem(item) {
-    const existingIdx = slots.findIndex(s => s && s.name === item.name);
+    const existingIdx = player.inventory.findIndex(s => s && s.name === item.name);
     if (existingIdx !== -1) {
-        slots[existingIdx].qty += item.qty;
+        player.inventory[existingIdx].qty += item.qty;
     } else {
-        const emptyIdx = slots.findIndex(s => s === null);
+        const emptyIdx = player.inventory.findIndex(s => s === null);
         if (emptyIdx === -1) { console.log('Inventory full!'); return; }
-        slots[emptyIdx] = { ...item };
+        player.inventory[emptyIdx] = { ...item };
     }
     if (inventoryOpen) renderInventory();
 }
 
 function removeItem(itemName, qty = 1) {
-    const idx = slots.findIndex(s => s && s.name === itemName);
+    const idx = player.inventory.findIndex(s => s && s.name === itemName);
     if (idx === -1) return;
-    slots[idx].qty -= qty;
-    if (slots[idx].qty <= 0) slots[idx] = null;
+    player.inventory[idx].qty -= qty;
+    if (player.inventory[idx].qty <= 0) player.inventory[idx] = null;
     if (inventoryOpen) renderInventory();
 }
 
 function renderInventory() {
     const slotEls = document.querySelectorAll('.inventory-slot');
     slotEls.forEach((el, i) => {
-        const item = slots[i];
+        const item = player.inventory[i];
         el.innerHTML = '';
         el.className = 'inventory-slot';
 
@@ -176,14 +164,98 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
-//character
-const character = 
-x = 0,
-y = 150,
-frameX = 0,
-frameY = 0
-
-
 function characterRender() {
-    
+    //ToDo: render character sprite on canvas
+}
+
+let box = document.getElementById('story-box');
+let choice = document.getElementById('choice');
+let storyLine = ['intro'];
+
+function resetGame() {
+    storyLine = ['intro'];
+    player.health = player.maxHealth;
+    player.inventory.fill(null);
+    updateHealthBar();
+    if (inventoryOpen) renderInventory();
+}
+
+function choiceBtn(choiceText, decision) {
+    const btn = document.createElement("button");
+    btn.className = "btn";
+    btn.innerHTML = choiceText;
+    choice.appendChild(btn);
+
+    btn.addEventListener("click", function() {
+        if (decision.healthChange) {
+            player.health += decision.healthChange;
+            if (player.health > player.maxHealth) player.health = player.maxHealth;
+            if (player.health < 0) player.health = 0;
+            updateHealthBar();
+        }
+
+        if (decision.inventory) {
+            const itemData = typeof decision.inventory === 'string'
+                ? { name: decision.inventory, icon: '🗡️', desc: `A ${decision.inventory}.`, qty: 1 }
+                : { name: decision.inventory.name, icon: decision.inventory.icon || '🗡️', desc: decision.inventory.desc || `A ${decision.inventory.name}.`, qty: decision.inventory.qty || 1 };
+            addItem(itemData);
+        }
+
+        if (decision.next) {
+            storyLine.push(decision.next);
+            displaystory();
+            return;
+        }
+
+        const normalized = choiceText.toLowerCase();
+        if (normalized.includes('return to menu')) {
+            resetGame();
+            showPage('menu');
+            return;
+        }
+        if (normalized.includes('exit')) {
+            window.close();
+            return;
+        }
+    });
+}
+
+function createStory(text) {
+    const item = document.createElement("p");
+    item.textContent = Array.isArray(text) ? text.join(' ') : text;
+    box.appendChild(item);
+}
+
+export function displaystory() {
+    const currentText = storyLine[storyLine.length - 1];
+    const currentScene = story[currentText];
+
+    if (!currentScene) return;
+
+    box.innerHTML = "";
+    choice.innerHTML = "";
+
+    const textParts = Array.isArray(currentScene.text) ? currentScene.text : [currentScene.text];
+    textParts.forEach(part => createStory(part));
+
+    const storyPage = document.getElementById('ordinary-world');
+    if (currentScene.background && storyPage && storyPage.style.display !== 'none') {
+        document.body.style.backgroundImage = `url("${currentScene.background}")`;
+    }
+
+    currentScene.choices.forEach(decision => choiceBtn(decision.text, decision));
+    updateHealthBar();
+    if (inventoryOpen) renderInventory();
+}
+
+document.getElementById('inventory-close').onclick = () => closeInventory();
+document.getElementById('inventory-toggle').onclick = (e) => {
+    console.log('Inventory toggle clicked'); //testing
+    inventoryOpen ? closeInventory() : openInventory();
+};
+if(document.getElementById('playBtn')) {
+    document.getElementById('playBtn').onclick = () => {
+        showPage('ordinary-world');
+        document.getElementById('hud').style.display = 'flex';
+    };
 }
