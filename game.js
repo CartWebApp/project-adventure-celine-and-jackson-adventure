@@ -175,3 +175,5 @@ document.addEventListener('keydown', (e) => {
         inventoryOpen ? closeInventory() : openInventory();
     }
 });
+
+//character rendering
