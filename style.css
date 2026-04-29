@@ -8,32 +8,39 @@ body {
 }
 
 .overlay {
-    position: relative;
+    position: absolute;
     width: 400px;
     height: 200px;
     border-radius: 10px;
-    transform: translate(110%, 50%);
     display: flex;
     flex-direction: column;
     align-items: center;
     background-color: rgba(0, 0, 0, 0.2);
+    transform: translate(-50%, -50%);
+    top: 40%;
+    left: 50%;
+
 }
 
 .overlay h1 {
-    font-family: 'MedievalSharp.ttf';
     font-size: 90px;
     text-align: center;
-    color: white;
+    color: #e0c870;
+    margin-top: -10px;
 }
 
 .btn {
+    display: block;
+    margin: 10px auto;
     text-decoration: none;
-    width: 100px;
+    width: 200px;
+    height: 50px;
     padding: 10px;
     border: none;
     background-color: #60b0e3;
     color: white;
     border-radius: 5px;
+    cursor: pointer;
 }
 
 .btn:hover {
@@ -41,8 +48,9 @@ body {
 }
 
 .continue {
-    margin-top: 20px;
-    width: 100px;
+    margin-top: -0px;
+    width: 200px;
+    height: 50px;
     padding: 10px;
     border: none;
     background-color: #60b0e3;
@@ -127,6 +135,7 @@ body {
 #inventory-titlebar {
     display: flex;
     align-items: center;
+    width: 220px;
     gap: 10px;
     background: linear-gradient(180deg, #2a3a5a 0%, #1a2840 100%);
     border-bottom: 1px solid #0a1020;
@@ -173,6 +182,7 @@ body {
     display: flex;
     padding: 8px 0 8px 8px;
     gap: 0;
+    box-sizing: border-box;
 }
 
 /* Slot grid */
@@ -181,6 +191,10 @@ body {
     grid-template-columns: repeat(5, 34px);
     gap: 5px;
     flex: 1;
+    background: rgb(38, 61, 95);
+    padding: 10px;
+    width: fit-content;
+    max-width: 205px;
 }
 
 .inventory-slot {

@@ -139,6 +139,7 @@ function createStory(text) {
 }
 
 function displaystory() {
+    let currentScene = story.background;
     let currentText = storyLine[storyLine.length - 1];
     console.log(currentText,story[currentText]);
 
