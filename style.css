@@ -1,5 +1,5 @@
 body {
-    background-image: url(Home-menu_screen.jpg);
+    background-image: url("Images/Home-menu_screen.jpg");
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
@@ -93,7 +93,7 @@ body {
 }
 
 #image {
-    background-image: url(Cave_3.png);
+    background-image: url("Images/Cave_3.png");
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;

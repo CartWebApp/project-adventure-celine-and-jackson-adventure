@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hush Cave</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="game.js" defer></script>
+    <script src="story.js" defer></script>
+</head>
+
+<body>
+    <div id="ordinary-world" class="page" style="display: none;">
+        <canvas id="gameCanvas" width="800" height="600"></canvas>
+            <div id="story-box"></div>
+        <img src="cave_entrance.webp" alt="cave" id="Hush-cave" width="500" onclick="showPage('game-screen-2')">
+    </div>
+
+    <div id="cave" class="page" style="display: none;">
+        <h1 class="cave-title">Hush Cave</h1>
+
+        <div id="game-screen-2" style="display: none;">
+
+        <div id="chest">
+
+            <div id="item-description">You found a chestplate! Seems to be in good condition... How did it end up in a cave?</div>
+        </div>
+
+        <p>Touch the stone?</p>
+        <button id="choice"></button>
+
+        <div id="game-screen-4" style="display: none;">
+</body>
+</html>
