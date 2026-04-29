@@ -48,7 +48,9 @@ body {
 }
 
 .continue {
-    margin-top: -0px;
+    display: block;
+    margin: 10px auto;
+    text-decoration: none;
     width: 200px;
     height: 50px;
     padding: 10px;
@@ -56,6 +58,7 @@ body {
     background-color: #60b0e3;
     color: white;
     border-radius: 5px;
+    cursor: pointer;
 }
 
 .continue:hover {
@@ -322,6 +325,7 @@ body {
     /* animation-name: slide;
     animation-duration: 10s; */
     transform: translate(335%, 26%);
+    
 }
 
 #story-box {
@@ -332,4 +336,11 @@ body {
     left: 50%;
     top: 50%;
     transform: translate(-50%,-50%);
+}
+
+#cave {
+    background-image: url(Images/cave.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
 }
