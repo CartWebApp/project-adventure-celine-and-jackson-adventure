@@ -73,9 +73,9 @@ function showPage(pageId) {
 
     
     const bgImages = {
-        'menu': 'url(Home-menu_screen.jpg)',
-        'ordinary-world': 'url(Ordinary_world.jpg)',
-        'Hush-cave': 'url(cave.png)'
+        'menu': 'url(Images/Home-menu_screen.jpg)',
+        'ordinary-world': 'url(Images/Ordinary_world.jpg)',
+        'Hush-cave': 'url(Images/cave.png)'
        
     };
     document.body.style.backgroundImage = bgImages[pageId] || 'url(Home-menu_screen.jpg)';

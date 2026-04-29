@@ -18,7 +18,7 @@ const story = {
             {text: "Enter Cave", next: "cave"}
         ],
         
-        background: "ordinary_world.jpg"
+        background: "Images/ordinary_world.jpg"
     },
 
     cave: {
