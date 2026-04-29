@@ -1,0 +1,7 @@
+body {
+    background-image: url(cave.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    height: 1050px;
+}
