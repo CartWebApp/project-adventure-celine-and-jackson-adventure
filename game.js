@@ -1,5 +1,12 @@
 const textBox = document.getElementById('gameCanvas');
 
+// start Game //
+
+function startGame() {
+    showPage('ordinary-world');
+    document.getElementById('hud').style.display = 'flex';
+}
+
 // health bar //
 let maxHealth = 100;
 let currentHealth = 100;
@@ -90,161 +97,81 @@ window.addEventListener('load', () => {
 });
 
 //Inventory
-const inventory = [];
+const SLOT_COUNT = 9;
+const slots = Array(SLOT_COUNT).fill(null);
+let inventoryOpen = false;
+let selectedSlot = -1;
 
+function openInventory() {
+    inventoryOpen = true;
+    document.getElementById('inventory-window').classList.add('open');
+    renderInventory();
+}
+
+function closeInventory() {
+    inventoryOpen = false;
+    document.getElementById('inventory-window').classList.remove('open');
+    document.getElementById('inventory-tooltip').style.display = 'none';
+}
 
 function addItem(item) {
-    const existingItem = inventory.find(i => i.name === item.name);
-    if (existingItem) {
-        existingItem.quantity += item.quantity;
+    const existingIdx = slots.findIndex(s => s && s.name === item.name);
+    if (existingIdx !== -1) {
+        slots[existingIdx].qty += item.qty;
     } else {
-        inventory.push(item);
+        const emptyIdx = slots.findIndex(s => s === null);
+        if (emptyIdx === -1) { console.log('Inventory full!'); return; }
+        slots[emptyIdx] = { ...item };
     }
-    updateInventoryUI();
+    if (inventoryOpen) renderInventory();
 }
 
+function removeItem(itemName, qty = 1) {
+    const idx = slots.findIndex(s => s && s.name === itemName);
+    if (idx === -1) return;
+    slots[idx].qty -= qty;
+    if (slots[idx].qty <= 0) slots[idx] = null;
+    if (inventoryOpen) renderInventory();
+}
 
-function removeItem(itemName, quantity = 1) {
-    const itemIndex = inventory.findIndex(i => i.name === itemName);
-    if (itemIndex !== -1) {
-        inventory[itemIndex].quantity -= quantity;
-        if (inventory[itemIndex].quantity <= 0) {
-            inventory.splice(itemIndex, 1);
+function renderInventory() {
+    const slotEls = document.querySelectorAll('.inventory-slot');
+    slotEls.forEach((el, i) => {
+        const item = slots[i];
+        el.innerHTML = '';
+        el.className = 'inventory-slot';
+
+        if (item) {
+            el.classList.add('filled');
+            const icon = document.createElement('span');
+            icon.className = 'slot-icon';
+            icon.textContent = item.icon;
+            el.appendChild(icon);
+
+            if (item.qty > 1) {
+                const qty = document.createElement('span');
+                qty.className = 'slot-qty';
+                qty.textContent = item.qty;
+                el.appendChild(qty);
+            }
+
+            el.addEventListener('mouseenter', () => {
+                document.getElementById('tooltip-name').textContent = item.name;
+                document.getElementById('tooltip-desc').textContent = item.desc;
+                document.getElementById('inventory-tooltip').style.display = 'block';
+            });
+            el.addEventListener('mouseleave', () => {
+                document.getElementById('inventory-tooltip').style.display = 'none';
+            });
         }
-    }
-    updateInventoryUI();
-}
 
-
-function updateInventoryUI() {
-    const inventoryContainer = document.getElementById('inventory-container');
-    inventoryContainer.innerHTML = ''; 
-    inventory.forEach(item => {
-        const itemElement = document.createElement('div');
-        itemElement.textContent = `${item.name} (x${item.quantity})`;
-        inventoryContainer.appendChild(itemElement);
+        if (selectedSlot === i) el.classList.add('selected');
+        el.onclick = () => { selectedSlot = selectedSlot === i ? -1 : i; renderInventory(); };
     });
 }
 
-
-document.addEventListener('keydown', (event) => {
-    if (event.key === 'e') { 
-        const inventoryContainer = document.getElementById('inventory-container');
-        inventoryContainer.style.display = inventoryContainer.style.display === 'none' ? 'block' : 'none';
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'e' || e.key === 'E') {
+        inventoryOpen ? closeInventory() : openInventory();
     }
-    
 });
-
-// inventory slots
-
-addItem(item);
-removeItem(itemName, 1);
-
-// Pixel Character
-const canvas = document.querySelector('canvas');
-const ctx = canvas.getContext('2d');
-const sprite = new Image ();
-sprite.src = 'Ready for Export.png'; 
-
-
-const SPRITE_SIZE = 32; 
-const SCALE = 2.5;
-const ANIMATION_SPEED = 8; 
-
-
-const player = {
-    x: 50,
-    y: 150,
-    width: SPRITE_SIZE * SCALE,
-    height: SPRITE_SIZE * SCALE,
-    frameX: 0,
-    frameY: 0,      
-    gameFrame: 0,
-    speed: 5,
-    moving: false,
-    facing: 1       
-};
-
-
-const keys = {};
-window.addEventListener('keydown', e => keys[e.code] = true);
-window.addEventListener('keyup', e => keys[e.code] = false);
-
-function handleInput() {
-    player.moving = false;
-
-    if (keys['KeyD']) {
-        player.x += player.speed;
-        player.facing = 1;
-        player.moving = true;
-        player.frameY = 1; 
-    } else if (keys['KeyA']) {
-        player.x -= player.speed;
-        player.facing = -1;
-        player.moving = true;
-        player.frameY = 1;
-    } else {
-        player.frameY = 0; 
-    }
-    if (keys['KeyRight']) {
-        player.x += player.speed;
-        player.facing = 1;
-        player.moving = true;
-        player.frameY = 1;
-    } else if (keys['KeyLeft']) {
-        player.x -= player.speed;
-        player.facing = -1;
-        player.moving = true;
-        player.frameY = 1;
-    } else {
-        player.frameY = 0;
-    }
-    if (keys['KeySpace']) {
-        player.y += player.speed;
-        player.moving = true;
-    } else {
-        player.frameX = 0;
-    }
-}
-
-
-function animate() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    handleInput();
-
-    const maxFrames = (player.frameY === 0) ? 6 : 7;
-    
-    if (player.moving || player.frameY === 0) {
-        player.frameX = Math.floor(player.gameFrame / ANIMATION_SPEED) % maxFrames;
-        player.gameFrame++;
-    }
-
-
-    ctx.save();
-    if (player.facing === -1) {
-     
-        ctx.translate(player.x + player.width, player.y);
-        ctx.scale(-1, 1);
-        ctx.drawImage(
-            sprite,
-            player.frameX * SPRITE_SIZE, player.frameY * SPRITE_SIZE,
-            SPRITE_SIZE, SPRITE_SIZE,
-            0, 0,
-            player.width, player.height
-        );
-    } else {
-        ctx.drawImage(
-            sprite,
-            player.frameX * SPRITE_SIZE, player.frameY * SPRITE_SIZE,
-            SPRITE_SIZE, SPRITE_SIZE,
-            player.x, player.y,
-            player.width, player.height
-        );
-    }
-    ctx.restore();
-
-    requestAnimationFrame(animate);
-}
-
-sprite.onload = animate;

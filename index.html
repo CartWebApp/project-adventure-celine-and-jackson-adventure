@@ -11,10 +11,30 @@
 </head>
 
 <body>
-    <nav id="inventory-container">
-        <div id="inventory">
-                <div class="inventory-slot"></div>
+   
+    <nav id="inventory-window">
+        <div id="inventory-titlebar">
+            <img src="backpack.webp" alt="Inventory" id="inventory-icon">
+            <span id="inventory-label">Inventory</span>
+            <button id="inventory-close" onclick="closeInventory()">X</button>
+        </div>
+        <div id="inventory-body">
+            <div id="inventory-grid">
+                <div class="inventory-slot" data-slot="0"></div>
+                <div class="inventory-slot" data-slot="1"></div>
+                <div class="inventory-slot" data-slot="2"></div>
+                <div class="inventory-slot" data-slot="3"></div>
+                <div class="inventory-slot" data-slot="4"></div>
+                <div class="inventory-slot" data-slot="5"></div>
+                <div class="inventory-slot" data-slot="6"></div>
+                <div class="inventory-slot" data-slot="7"></div>
+                <div class="inventory-slot" data-slot="8"></div>
+                <div class="inventory-slot" data-slot="9"></div>
             </div>
+        <div id="inventory-tooltip">
+            <div id="tooltip-name"></div>
+            <div id="tooltip-desc"></div>
+        </div>
     </nav>
     <div id="health-bar"></div>
 

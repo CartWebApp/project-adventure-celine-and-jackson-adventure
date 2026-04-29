@@ -12,7 +12,7 @@ body {
     width: 400px;
     height: 200px;
     border-radius: 10px;
-    transform: translate(199%, 50%);
+    transform: translate(110%, 50%);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -124,41 +124,176 @@ body {
 }
 
 /* Inventory */
-#inventory {
-    height: 75px;
-    width: 130px;
-    background-size: cover;
-    background-repeat: no-repeat;
-    grid-template-columns: repeat(5, 1fr); 
-    grid-template-columns: repeat(5, 1fr);
-    padding: 10px; 
-    border: 2px solid #ccc; 
-    border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    background-color: rgba(0, 0, 0, 0.8);
-    background-image: url('backpack.webp');
-    background-size: 89px;
+#inventory-titlebar {
     display: flex;
-    Justify-content:flex-end;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(180deg, #2a3a5a 0%, #1a2840 100%);
+    border-bottom: 1px solid #0a1020;
+    padding: 4px 7px;
+    height: 28px;
 }
 
-#inventory-container {
-    display: grid;
-    width: 200px;
-    background-color: rgba(0, 0, 0, 0.2);
-    border-radius: 10px;
+#inventory-icon {
+    height: 40px;
+}
+
+#inventory-label {
+    flex: 1;
+    font-size: 13px;
+    font-weight: bold;
+    color: #e0c870;
+    text-shadow: 1px 1px 0 #0a0800;
+    letter-spacing: 1px;
+    font-family: 'Courier New', monospace;
+}
+
+#inventory-close {
+    width: 20px;
+    height: 20px;
+    background: #7a1a1a;
+    border: 1px solid #aa3a3a;
+    border-bottom-color: #3a0a0a;
+    border-right-color: #3a0a0a;
+    color: #ffaaaa;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: 'Courier New', monospace;
+    padding: 0;
+    line-height: 20px;
+    text-align: center;
+}
+
+#inventory-close:hover { 
+    background: #aa2a2a; 
+}
+
+#inventory-body {
     display: flex;
-    
+    padding: 8px 0 8px 8px;
+    gap: 0;
+}
+
+/* Slot grid */
+#inventory-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 34px);
+    gap: 5px;
+    flex: 1;
 }
 
 .inventory-slot {
-    position:absolute;
-    padding: 15px;
-    background-color: rgba(0, 0, 0, 1);
-    border: solid 3px rgb(224, 202, 160);
-    gap: 15px;
-    width: 30px;
-    height: 30px;
+    width: 34px;
+    height: 34px;
+    background: #0d1525;
+    border: 1px solid #1a2840;
+    border-bottom-color: #2a3a55;
+    border-right-color: #2a3a55;
+    border-radius: 3px;
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.inventory-slot:hover  { 
+    background: #162035; border-color: #4a6a90; 
+}
+.inventory-slot.filled { 
+    border-color: #3a5a80; 
+}
+.inventory-slot.selected { 
+    border-color: #e0c870 !important; 
+}
+
+.inventory-slot .slot-icon {
+    font-size: 18px;
+    image-rendering: pixelated;
+}
+
+.inventory-slot .slot-qty {
+    position: absolute;
+    bottom: 1px;
+    right: 3px;
+    font-size: 9px;
+    color: #e0e0a0;
+    font-weight: bold;
+    font-family: 'Courier New', monospace;
+    text-shadow: 1px 1px 0 #000;
+}
+
+/* Scrollbar */
+#inventory-scrollbar {
+    width: 14px;
+    margin: 0 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+}
+
+.scroll-btn {
+    width: 12px;
+    height: 12px;
+    background: #1e2e48;
+    border: 1px solid #2a3a55;
+    border-bottom-color: #0a1020;
+    border-right-color: #0a1020;
+    color: #8aaad0;
+    font-size: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-family: monospace;
+}
+
+#scroll-track {
+    flex: 1;
+    width: 10px;
+    background: #0a1020;
+    border: 1px solid #1a2840;
+    border-radius: 1px;
+    position: relative;
+}
+
+#scroll-thumb {
+    width: 8px;
+    height: 24px;
+    background: #2a3e60;
+    border: 1px solid #3a5078;
+    border-bottom-color: #1a2840;
+    border-right-color: #1a2840;
+    position: absolute;
+    top: 2px;
+    left: 0;
+    border-radius: 1px;
+}
+
+/* Tooltip */
+#inventory-tooltip {
+    display: none;
+    background: #0d1525;
+    border: 1px solid #4a6a90;
+    padding: 6px 9px;
+    margin: 0 8px 8px;
+    border-radius: 2px;
+}
+
+#tooltip-name {
+    font-size: 12px;
+    font-weight: bold;
+    color: #e0c870;
+    font-family: 'Courier New', monospace;
+    margin-bottom: 2px;
+}
+
+#tooltip-desc {
+    font-size: 11px;
+    color: #8aaad0;
+    font-family: 'Courier New', monospace;
 }
 
 /* @keyframes slide {
