@@ -112,59 +112,61 @@ const story = {
     }
 }
 
-let box = document.getElementById('story-box');
-let choice = document.getElementById('choices');
-let storyLine = ["intro"];
+export
 
-function choiceBtn (choiceText, choose) {
-    let btn = document.createElement("button");
+// let box = document.getElementById('story-box');
+// let choice = document.getElementById('choices');
+// let storyLine = ["intro"];
 
-    btn.className = "btn";
+// function choiceBtn (choiceText, choose) {
+//     let btn = document.createElement("button");
 
-    btn.innerHTML = choiceText;
+//     btn.className = "btn";
+
+//     btn.innerHTML = choiceText;
     
 
-    btn.addEventListener("click", function() {
-        storyLine.push(choose);
-        displaystory();
-    });
+//     btn.addEventListener("click", function() {
+//         storyLine.push(choose);
+//         displaystory();
+//     });
 
-    choice.appendChild(btn);
+//     choice.appendChild(btn);
 
-}
+// }
 
-function createStory(text) {
-    let Item = document.createElement("p");
+// function createStory(text) {
+//     let Item = document.createElement("p");
 
-    for(let part of text) {
-    Item.innerText += part;
-}
-    box.appendChild(Item);
-}
+//     for(let part of text) {
+//     Item.innerText += part;
+// }
+//     box.appendChild(Item);
+// }
 
-function displaystory() {
-    let currentText = storyLine[storyLine.length - 1];
-    console.log(currentText,story[currentText]);
-    const currentScene = story[currentText];
+// function displaystory() {
+//     let currentText = storyLine[storyLine.length - 1];
+//     console.log(currentText,story[currentText]);
+//     const currentScene = story[currentText];
 
-    if(!currentScene) return;
+//     if(!currentScene) return;
 
-    box.innerHTML = "";
-    choice.innerHTML = "";
-    const textParts = Array.isArray(currentScene.text) ? currentScene.text : [currentScene.text];
+//     box.innerHTML = "";
+//     choice.innerHTML = "";
+//     const textParts = Array.isArray(currentScene.text) ? currentScene.text : [currentScene.text];
 
-    if (currentScene.background && storyPage && storyPage.style.display !== 'none') {
-        document.body.style.backgroundImage = `url("${currentScene.background}")`;
-    }
-    textParts.forEach(part => createStory(part));
+//     if (currentScene.background && storyPage && storyPage.style.display !== 'none') {
+//         document.body.style.backgroundImage = `url("${currentScene.background}")`;
+//     }
+//     textParts.forEach(part => createStory(part));
     
-    for(let decision of story[currentText].choices) {
-        choiceBtn(decision.text, decision.next);
-    }
+//     for(let decision of story[currentText].choices) {
+//         choiceBtn(decision.text, decision.next);
+//     }
 
- createStory(story[currentText].text);
+//  createStory(story[currentText].text);
 
-}
+// }
 
-displaystory();
+// displaystory();
 
