@@ -1,10 +1,19 @@
-import story from ./story.js
+import story from "./story.js"
 
 const textBox = document.getElementById('gameCanvas');
 const modal = document.getElementById('modal');
 const modalText = document.getElementById('modal-text');
 const modalBtn = document.getElementById('modal-btn');
 modalBtn.onclick = () => closeModal();
+
+displayModal('Welcome to the Adventure Game! Click "Play" to start your journey.', 'OK', 'warning'); //modal test
+
+const SLOT_COUNT = 9;
+const player = {
+    health: 100,
+    maxHealth: 100,
+    inventory: Array(SLOT_COUNT).fill(null),
+};
 
 // start Game //
 
@@ -103,10 +112,10 @@ window.addEventListener('load', () => {
 });
 
 //Inventory
-const SLOT_COUNT = 9;
-const slots = Array(SLOT_COUNT).fill(null);
-let inventoryOpen = false;
-let selectedSlot = -1;
+// const SLOT_COUNT = 9;
+// const slots = Array(SLOT_COUNT).fill(null);
+// let inventoryOpen = false;
+// let selectedSlot = -1;
 
 function openInventory() {
     inventoryOpen = true;
