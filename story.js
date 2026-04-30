@@ -145,10 +145,14 @@ function createStory(text) {
 function displaystory() {
     let currentText = storyLine[storyLine.length - 1];
     console.log(currentText,story[currentText]);
+    const currentScene = 
+
+    if(!currentScene) return;
 
     box.innerHTML = "";
     choice.innerHTML = "";
-
+    const textParts = Array.isArray(currentScene.text) ? currentScene.text : [currentScene.text];
+    textParts.forEach(part => createStory(part));
     
     for(let decision of story[currentText].choices) {
         choiceBtn(decision.text, decision.next);
