@@ -112,7 +112,7 @@ const story = {
     }
 }
 
-export
+export default story
 
 // let box = document.getElementById('story-box');
 // let choice = document.getElementById('choices');

@@ -1,4 +1,10 @@
+import story from ./story.js
+
 const textBox = document.getElementById('gameCanvas');
+const modal = document.getElementById('modal');
+const modalText = document.getElementById('modal-text');
+const modalBtn = document.getElementById('modal-btn');
+modalBtn.onclick = () => closeModal();
 
 // start Game //
 
