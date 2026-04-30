@@ -27,7 +27,7 @@ const story = {
         choices: [
             { text: "open", next: "open" }
         ],
-        background: "cave.png"
+        background: "Images/cave.png"
     },
 
     open: {
@@ -37,7 +37,7 @@ const story = {
             { text: "Yes", next: "touch" },
             { text: "No", next: "leave" }
         ],
-        background: "cave.png"      
+        background: "Images/cave.png"      
     },
 
     touch: {
@@ -47,7 +47,7 @@ const story = {
             { text: "Boulder", next: "Boulder" },
             { text: "Tree", next: "Tree" }
         ],
-        background: "forest_landscape_2.jpg"
+        background: "Images/forest_landscape_2.jpg"
     },
 
     Boulder: {
@@ -57,7 +57,7 @@ const story = {
             { text: "Yes", next: "Pickup" },
             { text: "No", next: "Emptyhanded"}
         ],
-        background: "forest_landscape_2.jpg"        
+        background: "Images/forest_landscape_2.jpg"        
     },
 
    
@@ -67,21 +67,21 @@ const story = {
         choices: [
             { text: "set out on journey", next: "setout"}
         ],
-        background: "forest_landscape_2.jpg"
+        background: "Images/forest_landscape_2.jpg"
     },
     setout: {
         text: "After a while, you spot a large cave in the distance.",
         choices: [
             { text: "go to the cave", next: "cave_2" }
         ],
-        background: "forest_landscape.jpg"
+        background: "Images/forest_landscape.jpg"
     }, 
     cave_2: {
         text: ["You make it to the cave.","After some time, you find a chest similar to the one you saw where you found the chestplate."],
         choices: [
             { text: "open chest", next: "GoodEnding"}
         ],
-        background: "cave_2.png"
+        background: "Images/cave_2.png"
     },
 
     GoodEnding: {
@@ -113,7 +113,7 @@ const story = {
 }
 
 let box = document.getElementById('story-box');
-let choice = document.getElementsByClassName('choices');
+let choice = document.getElementById('choices');
 let storyLine = ["intro"];
 
 function choiceBtn (choiceText, choose) {
@@ -122,6 +122,7 @@ function choiceBtn (choiceText, choose) {
     btn.className = "btn";
 
     btn.innerHTML = choiceText;
+    
 
     btn.addEventListener("click", function() {
         storyLine.push(choose);
@@ -129,7 +130,6 @@ function choiceBtn (choiceText, choose) {
     });
 
     choice.appendChild(btn);
-
 
 }
 
@@ -146,18 +146,15 @@ function displaystory() {
     let currentText = storyLine[storyLine.length - 1];
     console.log(currentText,story[currentText]);
 
-    
-    
     box.innerHTML = "";
     choice.innerHTML = "";
 
     
-        createStory(story[currentText].text);
-    
-
     for(let decision of story[currentText].choices) {
-        choiceBtn(decision[0], decision[1]);
+        choiceBtn(decision.text, decision.next);
     }
+
+ createStory(story[currentText].text);
 
 }
 

@@ -183,7 +183,5 @@ y = 150,
 frameX = 0,
 frameY = 0
 
+let characterImg = document.getElementById('character').src = "Images/Ready for Export.png";
 
-function characterRender() {
-    
-}

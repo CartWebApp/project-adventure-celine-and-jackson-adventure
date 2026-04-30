@@ -344,3 +344,13 @@ body {
     background-position: center center;
     background-size: cover;
 }
+
+#choices {
+    text-decoration: none;
+}
+
+#character {
+    height: 200px;
+    width: 500px;
+    transform: translateY(1%);
+}
