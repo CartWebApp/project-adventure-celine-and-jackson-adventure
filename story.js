@@ -145,13 +145,17 @@ function createStory(text) {
 function displaystory() {
     let currentText = storyLine[storyLine.length - 1];
     console.log(currentText,story[currentText]);
-    const currentScene = 
+    const currentScene = story[currentText];
 
     if(!currentScene) return;
 
     box.innerHTML = "";
     choice.innerHTML = "";
     const textParts = Array.isArray(currentScene.text) ? currentScene.text : [currentScene.text];
+
+    if (currentScene.background && storyPage && storyPage.style.display !== 'none') {
+        document.body.style.backgroundImage = `url("${currentScene.background}")`;
+    }
     textParts.forEach(part => createStory(part));
     
     for(let decision of story[currentText].choices) {
