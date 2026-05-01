@@ -21,6 +21,13 @@ const story = {
     },
 
     open: {
+        text: "You found a chestplate! Seems to be in good condition... How did it end up in a cave?",
+        choices: [
+            { text: "equip", next: "take", inventory: "Chestplate"}
+        ]
+    },
+
+    take: {
         text: ["As you traverse further into the cave, you encounter a mysterious stone","Touch the stone?"],
 
         choices: [
@@ -77,9 +84,17 @@ const story = {
     cave_2: {
         text: ["You make it to the cave.","After some time, you find a chest similar to the one you saw where you found the chestplate."],
         choices: [
-            { text: "open chest", next: "GoodEnding"}
+            { text: "open chest", next: "open_2"}
         ],
         background: "Images/cave_2.png"
+    },
+
+    open_2: {
+
+        text: "You found a health potion! Your health has been fully restored!",
+        choices: [
+            { text: "continue", next: "GoodEnding", healthChange: 100 }
+        ],
     },
 
     GoodEnding: {

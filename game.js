@@ -222,6 +222,7 @@ function choiceBtn(choiceText, decision) {
             const itemData = typeof decision.inventory === 'string'
                 ? { name: decision.inventory, icon: '🗡️', desc: `A ${decision.inventory}.`, qty: 1 }
                 : { name: decision.inventory.name, icon: decision.inventory.icon || '🗡️', desc: decision.inventory.desc || `A ${decision.inventory.name}.`, qty: decision.inventory.qty || 1 };
+            
             addItem(itemData);
         }
 
@@ -252,6 +253,8 @@ function createStory(text) {
     item.textContent = Array.isArray(text) ? text.join(' ') : text;
     box.appendChild(item);
 }
+
+
 
 export function displaystory() {
     const currentText = storyLine[storyLine.length - 1];
@@ -305,3 +308,4 @@ function displayModal(text, btnText = 'Close', type = 'info') {
 function closeModal() {
     modal.classList = '';
 }
+
