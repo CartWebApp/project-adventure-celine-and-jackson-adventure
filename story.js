@@ -23,12 +23,12 @@ const story = {
     open: {
         text: "You found a chestplate! Seems to be in good condition... How did it end up in a cave?",
         choices: [
-            { text: "equip", next: "take", inventory: "Chestplate"}
+            { text: "equip", next: "take", inventory: {icon: '🎽', desc: 'A Chestplate'}}
         ]
     },
 
     take: {
-        text: ["As you traverse further into the cave, you encounter a mysterious stone","Touch the stone?"],
+        text: ["As you traverse further into the cave, you encounter a mysterious stone...","Touch the stone?"],
 
         choices: [
             { text: "Yes", next: "touch" },

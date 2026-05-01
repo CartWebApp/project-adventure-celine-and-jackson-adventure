@@ -224,6 +224,12 @@ function choiceBtn(choiceText, decision) {
                 : { name: decision.inventory.name, icon: decision.inventory.icon || '🗡️', desc: decision.inventory.desc || `A ${decision.inventory.name}.`, qty: decision.inventory.qty || 1 };
             
             addItem(itemData_1);
+        } else if (decision.inventory == 'chestplate') {
+        const itemData_2 = typeof decision.inventory === 'string'
+            ? { name: decision.inventory, icon: '🎽', desc: `A ${decision.inventory}.`, qty: 1} :
+            { name: decision.inventory.name, icon: decision.inventory.icon || '🎽', desc: decision.inventory.desc || `A ${decision.inventory.name}.`, qty: decision.inventory.qty || 1 };
+   
+   addItem(itemData_2);
         }
 
         // Check special button actions
@@ -260,13 +266,7 @@ export function displaystory() {
     const currentText = storyLine[storyLine.length - 1];
     const currentScene = story[currentText];
 
-    if (currentText.next == "Take") {
-        const itemData_2 = typeof currentText.inventory === 'string'
-            ? { name: currentText.inventory, icon: '$(shield)', desc: `A ${currentText.inventory}.`, qty: 1} :
-            { name: currentText.inventory.name, icon: currentText.inventory.icon || '$(shield)', desc: currentText.inventory.desc || `A ${currentText.inventory.name}.`, qty: currentText.inventory.qty || 1 };
-   
-   addItem(itemData_2);
-        }
+
    
 
     if (!currentScene) return;
