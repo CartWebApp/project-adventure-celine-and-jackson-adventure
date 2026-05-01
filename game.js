@@ -1,3 +1,5 @@
+import story from "./story.js";
+
 const textBox = document.getElementById('gameCanvas');
 
 // start Game //
