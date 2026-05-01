@@ -264,7 +264,10 @@ export function displaystory() {
         const itemData_2 = typeof currentText.inventory === 'string'
             ? { name: currentText.inventory, icon: '$(shield)', desc: `A ${currentText.inventory}.`, qty: 1} :
             { name: currentText.inventory.name, icon: currentText.inventory.icon || '$(shield)', desc: currentText.inventory.desc || `A ${currentText.inventory.name}.`, qty: currentText.inventory.qty || 1 };
-    }
+   
+   addItem(itemData_2);
+        }
+   
 
     if (!currentScene) return;
 
