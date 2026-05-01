@@ -17,7 +17,6 @@ const story = {
         choices: [
             {text: "Enter Cave", next: "cave"}
         ],
-        
         background: "Images/ordinary_world.jpg"
     },
 
@@ -31,6 +30,13 @@ const story = {
     },
 
     open: {
+        text: "You found a chestplate! Seems to be in good condition... How did it end up in a cave?",
+        choices: [
+            { text: "equip", next: "take", inventory: "Chestplate"}
+        ]
+    },
+
+    take: {
         text: ["As you traverse further into the cave, you encounter a mysterious stone","Touch the stone?"],
 
         choices: [
@@ -45,7 +51,7 @@ const story = {
         text: ["You touch the stone. Suddenly, you are hit with a bright flash of light.","As the light begins to fade, and you regain your vision, nothing seemed to change. You exit the cave...","'Where am I?'","'This isn't the forest.'","You head back into the cave and grab the stone and try to use it again in hopes that it would bring you back.","Nothing happens, but then a voice resonates from the stone.","'All charges used, catalyst empty, now self destructing in 10 seconds.'","Boulder or Tree?"], 
         choices: [
             { text: "Boulder", next: "Boulder" },
-            { text: "Tree", next: "Tree" }
+            { text: "Tree", next: "Tree", healthChange: -100 }
         ],
         background: "Images/forest_landscape_2.jpg"
     },
@@ -54,7 +60,7 @@ const story = {
 
         text: ["You choose to hide behind the boulder...","The stone explodes, but the boulder provides protection, so you survive unscathed.","As you look to where the stone once was, you see something shine on the ground, a sword.","Pick up the Sword?"],
         choices: [
-            { text: "Yes", next: "Pickup" },
+            { text: "Yes", next: "Pickup", inventory: "Sword" },
             { text: "No", next: "Emptyhanded"}
         ],
         background: "Images/forest_landscape_2.jpg"        
@@ -64,6 +70,14 @@ const story = {
     Pickup: {
 
         text: "You pick up the sword and head off in search of a way out of this strange world.", 
+        choices: [
+            { text: "set out on journey", next: "setout"}
+        ],
+        background: "Images/forest_landscape_2.jpg"
+    },
+    EmptyHanded: {
+
+        text: "You leave the sword behind and head off in search of a way out of this strange world.", 
         choices: [
             { text: "set out on journey", next: "setout"}
         ],
@@ -79,9 +93,17 @@ const story = {
     cave_2: {
         text: ["You make it to the cave.","After some time, you find a chest similar to the one you saw where you found the chestplate."],
         choices: [
-            { text: "open chest", next: "GoodEnding"}
+            { text: "open chest", next: "open_2"}
         ],
         background: "Images/cave_2.png"
+    },
+
+    open_2: {
+
+        text: "You found a health potion! Your health has been fully restored!",
+        choices: [
+            { text: "continue", next: "GoodEnding", healthChange: 100 }
+        ],
     },
 
     GoodEnding: {
@@ -111,6 +133,8 @@ const story = {
         ]
     }
 }
+
+export default story;
 
 let box = document.getElementById('story-box');
 let choice = document.getElementById('choices');
