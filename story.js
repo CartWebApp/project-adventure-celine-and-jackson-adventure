@@ -1,13 +1,4 @@
-// const story = {
-//     intro: {
-//         text: "You wake up in a dark room. You can't remember how you got here. You see a door to your left and a window to your right.",
-//         choices: [
-//             { text: "Go through the door", next: "door" },
-//             { text: "Look out the window", next: "window" }
-//         ],
-//         background: "dark_room.jpg"   
-//     }
-// }
+
 
 const story = {
     intro: {
@@ -17,7 +8,6 @@ const story = {
         choices: [
             {text: "Enter Cave", next: "cave"}
         ],
-        
         background: "Images/ordinary_world.jpg"
     },
 
@@ -31,7 +21,14 @@ const story = {
     },
 
     open: {
-        text: ["As you traverse further into the cave, you encounter a mysterious stone","Touch the stone?"],
+        text: "You found a chestplate! Seems to be in good condition... How did it end up in a cave?",
+        choices: [
+            { text: "equip", next: "take", inventory: {icon: '🎽', desc: 'A Chestplate'}}
+        ]
+    },
+
+    take: {
+        text: ["As you traverse further into the cave, you encounter a mysterious stone...","Touch the stone?"],
 
         choices: [
             { text: "Yes", next: "touch" },
@@ -45,7 +42,7 @@ const story = {
         text: ["You touch the stone. Suddenly, you are hit with a bright flash of light.","As the light begins to fade, and you regain your vision, nothing seemed to change. You exit the cave...","'Where am I?'","'This isn't the forest.'","You head back into the cave and grab the stone and try to use it again in hopes that it would bring you back.","Nothing happens, but then a voice resonates from the stone.","'All charges used, catalyst empty, now self destructing in 10 seconds.'","Boulder or Tree?"], 
         choices: [
             { text: "Boulder", next: "Boulder" },
-            { text: "Tree", next: "Tree" }
+            { text: "Tree", next: "Tree", healthChange: -100 }
         ],
         background: "Images/forest_landscape_2.jpg"
     },
@@ -54,7 +51,7 @@ const story = {
 
         text: ["You choose to hide behind the boulder...","The stone explodes, but the boulder provides protection, so you survive unscathed.","As you look to where the stone once was, you see something shine on the ground, a sword.","Pick up the Sword?"],
         choices: [
-            { text: "Yes", next: "Pickup" },
+            { text: "Yes", next: "Pickup", inventory: "Sword" },
             { text: "No", next: "Emptyhanded"}
         ],
         background: "Images/forest_landscape_2.jpg"        
@@ -64,6 +61,14 @@ const story = {
     Pickup: {
 
         text: "You pick up the sword and head off in search of a way out of this strange world.", 
+        choices: [
+            { text: "set out on journey", next: "setout"}
+        ],
+        background: "Images/forest_landscape_2.jpg"
+    },
+    EmptyHanded: {
+
+        text: "You leave the sword behind and head off in search of a way out of this strange world.", 
         choices: [
             { text: "set out on journey", next: "setout"}
         ],
@@ -79,9 +84,17 @@ const story = {
     cave_2: {
         text: ["You make it to the cave.","After some time, you find a chest similar to the one you saw where you found the chestplate."],
         choices: [
-            { text: "open chest", next: "GoodEnding"}
+            { text: "open chest", next: "open_2"}
         ],
         background: "Images/cave_2.png"
+    },
+
+    open_2: {
+
+        text: "You found a health potion! Your health has been fully restored!",
+        choices: [
+            { text: "continue", next: "GoodEnding", healthChange: 100 }
+        ],
     },
 
     GoodEnding: {
@@ -112,61 +125,4 @@ const story = {
     }
 }
 
-export default story
-
-// let box = document.getElementById('story-box');
-// let choice = document.getElementById('choices');
-// let storyLine = ["intro"];
-
-// function choiceBtn (choiceText, choose) {
-//     let btn = document.createElement("button");
-
-//     btn.className = "btn";
-
-//     btn.innerHTML = choiceText;
-    
-
-//     btn.addEventListener("click", function() {
-//         storyLine.push(choose);
-//         displaystory();
-//     });
-
-//     choice.appendChild(btn);
-
-// }
-
-// function createStory(text) {
-//     let Item = document.createElement("p");
-
-//     for(let part of text) {
-//     Item.innerText += part;
-// }
-//     box.appendChild(Item);
-// }
-
-// function displaystory() {
-//     let currentText = storyLine[storyLine.length - 1];
-//     console.log(currentText,story[currentText]);
-//     const currentScene = story[currentText];
-
-//     if(!currentScene) return;
-
-//     box.innerHTML = "";
-//     choice.innerHTML = "";
-//     const textParts = Array.isArray(currentScene.text) ? currentScene.text : [currentScene.text];
-
-//     if (currentScene.background && storyPage && storyPage.style.display !== 'none') {
-//         document.body.style.backgroundImage = `url("${currentScene.background}")`;
-//     }
-//     textParts.forEach(part => createStory(part));
-    
-//     for(let decision of story[currentText].choices) {
-//         choiceBtn(decision.text, decision.next);
-//     }
-
-//  createStory(story[currentText].text);
-
-// }
-
-// displaystory();
-
+export default story;
