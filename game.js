@@ -318,3 +318,46 @@ function closeModal() {
     modal.classList = '';
 }
 
+function choiceBtn (choiceText, choose) {
+    let btn = document.createElement("button");
+
+    btn.className = "btn";
+
+    btn.innerHTML = choiceText;
+    
+
+    btn.addEventListener("click", function() {
+        storyLine.push(choose);
+        displaystory();
+    });
+
+    choice.appendChild(btn);
+
+}
+
+function createStory(text) {
+    let Item = document.createElement("p");
+
+    for(let part of text) {
+    Item.innerText += part;
+}
+    box.appendChild(Item);
+}
+
+function displaystory() {
+    let currentText = storyLine[storyLine.length - 1];
+    console.log(currentText,story[currentText]);
+
+    box.innerHTML = "";
+    choice.innerHTML = "";
+
+    
+    for(let decision of story[currentText].choices) {
+        choiceBtn(decision.text, decision.next);
+    }
+
+ createStory(story[currentText].text);
+
+}
+
+displaystory();
