@@ -1,3 +1,4 @@
+// import Typewriter from 'typewriter-effect/dist/core';
 import story from "./story.js";
 
 const textBox = document.getElementById('gameCanvas');
@@ -6,7 +7,7 @@ const modalText = document.getElementById('modal-text');
 const modalBtn = document.getElementById('modal-btn');
 modalBtn.onclick = () => closeModal();
 
-displayModal('Welcome to the Adventure Game! Click "Play" to start your journey.', 'OK', 'warning'); //modal test
+// displayModal('Welcome to the Adventure Game! Click "Play" to start your journey.', 'OK', 'warning'); //modal test
 
 const SLOT_COUNT = 9;
 const player = {
@@ -65,16 +66,16 @@ window.addEventListener('load', () => {
 });
 
  // menu //
-function typeText(element, text, speed = 50) {
-    let i = 0;
-    element.textContent = '';
-    const timer = setInterval(() => {
-        element.textContent += text.charAt(i);
-        i++;
-        if (i >= text.length) clearInterval(timer);
-    }, speed);
+// function typeText(element, text, speed = 50) {
+//     let i = 0;
+//     element.textContent = '';
+//     const timer = setInterval(() => {
+//         element.textContent += text.charAt(i);
+//         i++;
+//         if (i >= text.length) clearInterval(timer);
+//     }, speed);
 
-}
+// }
 
 function showPage(pageId) {
     const pages = document.querySelectorAll('.page');
@@ -90,14 +91,14 @@ function showPage(pageId) {
 
     // Animated story text 
     displaystory();
-    setTimeout(() => {
-        const page = document.getElementById(pageId);
-        const storyBoxes = page.querySelectorAll('#story-box');
-        storyBoxes.forEach((box, index) => {
-            const text = box.textContent.trim();
-            setTimeout(() => typeText(box, text, 50), index * 1000);
-        });
-    }, 500);
+    // setTimeout(() => {
+    //     const page = document.getElementById(pageId);
+    //     const storyBoxes = page.querySelectorAll('#story-box');
+    //     storyBoxes.forEach((box, index) => {
+    //         const text = box.textContent.trim();
+    //         setTimeout(() => typeText(box, text, 50), index * 1000);
+    //     });
+    // }, 500);
 
 }
 
@@ -182,8 +183,9 @@ document.addEventListener('keydown', (e) => {
 
 function characterRender() {
     //ToDo: render character sprite on canvas
+    createImageBitmap('Ready for Export.png');
 }
-
+// characterRender();
 let box = document.getElementById('story-box');
 let choice = document.getElementById('choice');
 let storyLine = ['intro'];
@@ -250,6 +252,7 @@ function choiceBtn(choiceText, decision) {
             displaystory();
             return;
         }
+
     });
 
 }
@@ -265,9 +268,9 @@ function createStory(text) {
 export function displaystory() {
     const currentText = storyLine[storyLine.length - 1];
     const currentScene = story[currentText];
-
-
-   
+    let nextScene = currentText.next;
+//storytext will have the same transition as the 'intro' text
+   story[nextScene];
 
     if (!currentScene) return;
 
@@ -275,7 +278,14 @@ export function displaystory() {
     choice.innerHTML = "";
 
     const textParts = Array.isArray(currentScene.text) ? currentScene.text : [currentScene.text];
-    textParts.forEach(part => createStory(part));
+    // textParts.forEach(part => createStory(part));
+    new Typewriter('#story-box', {
+        strings: textParts,
+        autoStart: true,
+        pauseFor: 2000,
+        deleteSpeed: 10,
+        delay: 35
+      });
 
     const storyPage = document.getElementById('ordinary-world');
     if (currentScene.background && storyPage && storyPage.style.display !== 'none') {
@@ -318,3 +328,12 @@ function closeModal() {
     modal.classList = '';
 }
 
+//timer
+let timer = document.getElementById('timer');
+for (let g = 10; g = 0; g--) {
+    timer.innerHTML = "";
+}
+
+//explosion
+const explode = document.createElement("img");
+explode.className = "explode";
