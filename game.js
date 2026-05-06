@@ -335,5 +335,9 @@ for (let g = 10; g = 0; g--) {
 }
 
 //explosion
-const explode = document.createElement("img");
+const explode = document.createElement("img").src = "Images/explosion.gif";
 explode.className = "explode";
+
+if (decision.next === 'Boulder' || decision.next === 'Tree') {
+    explode;
+}
