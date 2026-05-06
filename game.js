@@ -183,7 +183,6 @@ document.addEventListener('keydown', (e) => {
 
 function characterRender() {
     //ToDo: render character sprite on canvas
-    createImageBitmap('Ready for Export.png');
 }
 // characterRender();
 let box = document.getElementById('story-box');
@@ -199,9 +198,19 @@ function resetGame() {
 }
 
 function choiceBtn(choiceText, decision) {
-    const btn = document.createElement("button");
+    let btn;
+    if( choiceText === "door"){
+        btn = document.createElement("img");
+        btn.src = "Images/door.png";
+        btn.classList = "door";
+    } else {
+        btn = document.createElement("button");
+    }
     btn.className = "btn";
     btn.innerHTML = choiceText;
+    
+
+
     choice.appendChild(btn);
 
     btn.addEventListener("click", function() {
@@ -241,7 +250,7 @@ function choiceBtn(choiceText, decision) {
             showPage('menu');
             return;
         }
-        if (normalized.includes('exit')) { // this does not actually close the window, security seetings prevent that, but it will stop the game from progressing.
+        if (normalized.includes('exit')) { // this does not actually close the window, security settings prevent that, but it will stop the game from progressing.
             window.close();
             return;
         }
@@ -253,6 +262,15 @@ function choiceBtn(choiceText, decision) {
             return;
         }
 
+
+
+        // secret ending
+            // const door = document.createElement("img").src = "door.png";
+            // door.className = "door";
+            // door.addEventListener("click", function() {
+            //     decision.next = "SecretEnding";
+            //     displaystory();
+            // });
     });
 
 }
@@ -332,12 +350,7 @@ function closeModal() {
 let timer = document.getElementById('timer');
 for (let g = 10; g = 0; g--) {
     timer.innerHTML = "";
+    console.log(g);
 }
 
-//explosion
-const explode = document.createElement("img").src = "Images/explosion.gif";
-explode.className = "explode";
 
-if (decision.next === 'Boulder' || decision.next === 'Tree') {
-    explode;
-}

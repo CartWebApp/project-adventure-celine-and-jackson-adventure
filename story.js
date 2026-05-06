@@ -41,8 +41,8 @@ const story = {
 
         text: ["You touch the stone. Suddenly, you are hit with a bright flash of light.","As the light begins to fade, and you regain your vision, nothing seemed to change. You exit the cave...","'Where am I?'","'This isn't the forest.'","You head back into the cave and grab the stone and try to use it again in hopes that it would bring you back.","Nothing happens, but then a voice resonates from the stone.","'All charges used, catalyst empty, now self destructing in 10 seconds.'","Boulder or Tree?"], 
         choices: [
-            { text: "Boulder", next: "Boulder", },
-            { text: "Tree", next: "Tree", healthChange: -100, }
+            { text: "Boulder", next: "Boulder", explosion: "Images/explosion.gif"},
+            { text: "Tree", next: "Tree", healthChange: -100, explosion: "Images/explosion.gif"}
         ],
         background: "Images/forest_landscape_2.jpg"
     },
@@ -93,8 +93,10 @@ const story = {
 
         text: "You found a health potion! Your health has been fully restored!",
         choices: [
-            { text: "continue", next: "GoodEnding", healthChange: 100 }
+            { text: "continue", next: "GoodEnding", healthChange: 100 },
+            { text: "door", next: "SecretEnding" }
         ],
+        
     },
 
     GoodEnding: {
@@ -121,7 +123,8 @@ const story = {
         choices: [
             { text: "Return to Menu" },
             { text: "exit" }
-        ]
+        ],
+        background: "Images/Cave_3.png"
     }
 }
 
