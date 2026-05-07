@@ -196,14 +196,15 @@ function resetGame() {
 
 function choiceBtn(choiceText, decision) {
     let btn;
+   
     if( choiceText === "door"){
         btn = document.createElement("img");
         btn.src = "Images/door.png";
-        btn.classList = 'door';
+        btn.className = 'door';
     } else {
         btn = document.createElement("button");
+        btn.className = "btn";
     }
-    btn.className = "btn";
     btn.innerHTML = choiceText;
     
 

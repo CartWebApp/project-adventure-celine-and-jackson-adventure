@@ -52,7 +52,7 @@ const story = {
         text: ["You choose to hide behind the boulder...","The stone explodes, but the boulder provides protection, so you survive unscathed.","As you look to where the stone once was, you see something shine on the ground, a sword.","Pick up the Sword?"],
         choices: [
             { text: "Yes", next: "Pickup", inventory: "Sword" },
-            { text: "No", next: "Emptyhanded"}
+            { text: "No", next: "Emptyhanded" }
         ],
         background: "Images/forest_landscape_2.jpg"        
     },
@@ -62,34 +62,34 @@ const story = {
 
         text: "You pick up the sword and head off in search of a way out of this strange world.", 
         choices: [
-            { text: "set out on journey", next: "setout"}
+            { text: "set out on journey", next: "setout_1"}
         ],
         background: "Images/forest_landscape_2.jpg"
     },
-    EmptyHanded: {
+    Emptyhanded: {
 
         text: "You leave the sword behind and head off in search of a way out of this strange world.", 
         choices: [
-            { text: "set out on journey", next: "setout"}
+            { text: "set out on journey", next: "setout_2"}
         ],
         background: "Images/forest_landscape_2.jpg"
     },
-    setout: {
+    setout_1: {
         text: "After a while, you spot a large cave in the distance.",
         choices: [
-            { text: "go to the cave", next: "cave_2" }
+            { text: "go to the cave", next: "cave_2a" }
         ],
         background: "Images/forest_landscape.jpg"
     }, 
-    cave_2: {
+    cave_2a: {
         text: ["You make it to the cave.","After some time, you find a chest similar to the one you saw where you found the chestplate."],
         choices: [
-            { text: "open chest", next: "open_2"}
+            { text: "open chest", next: "open_2a"}
         ],
         background: "Images/cave_2.png"
     },
 
-    open_2: {
+    open_2a: {
 
         text: "You found a health potion! Your health has been fully restored!",
         choices: [
@@ -103,7 +103,7 @@ const story = {
 
         text: ["You've defeated the dragon and returned home.","Thank you for playing!"],
         choices: [
-            { text: "Return to Menu" },
+            { text: "Return to Menu", healthChange: -50 },
             { text: "exit" }
         ]
     },
@@ -117,6 +117,41 @@ const story = {
             ]
         },
 
+    setout_2: {
+
+        text: "After a while, you spot a large cave in the distance, but it is guarded by monsters.",
+        choices: [
+            { text: "go to the cave", next: "cave_2b", healthChange: -99 }
+        ],
+        background: "Images/forest_landscape.jpg"
+    },
+
+    cave_2b: {
+
+        text: ["Miraculously, you make it to the cave.","After some time, you find a chest similar to the one you saw where you found the chestplate."],
+        choices: [
+            { text: "open chest", next: "open_2b"}
+        ],
+        background: "Images/cave_2.png"
+    },
+
+    open_2b: {
+
+        text: "You found a health potion! Your health has been fully restored!",
+        choices: [
+            { text: "continue", next: "BadEnding", healthChange: 100 },
+            { text: "door", next: "SecretEnding" }
+        ],
+    },
+
+    BadEnding: {
+        text: ["After you avoid the monsters, you reach a large room.","On the ground, you find a familiar looking stone.","You rush towards the stone, but a dragon appears.","You try to fight off the monster, but because you don't have anything to defend yourself with, you get eaten."],
+        choices: [
+            { text: "Return to Menu", healthChange: -100 },
+            { text: "exit"}
+        ]
+    },
+
     SecretEnding: {
 
         text: ["As you go through the Mighty Caverns, fending off monsters, you find a door tucked away in a corner.","You enter and find a purple portal.","'What is that? Wait...'","'Could it be? A way out!?'"],
@@ -125,6 +160,41 @@ const story = {
             { text: "exit" }
         ],
         background: "Images/Cave_3.png"
+    },
+
+    leave: {
+        text: ["Thinking it is just a regular rock with light bouncing off it, you leave the rock alone...","And you continue your forest stroll."],
+        choices: [
+            { text: "Continue stroll", next: "continue"}
+        ]
+    },
+
+    continue: {
+        text: "As you walk through the forest, a sinkhole appears and you fall in...",
+        choices: [
+            {text: "fall", next: "fall"}
+        ],
+        background: "Images/ordinary_world.jpg"
+    },
+    fall: {
+        text: ["You hit the ground and somehow survive.","You look around and you spot a strange portal."],
+        choices: [
+            {text: "Go through", next: "go"}
+        ],
+        background: "Images/Home-menu_screen.jpg"
+    },
+    go: {
+        text: ["You step through the portal and find yourself in a strange, vibrant world...","The air feels different, and the sky is painted with colors you've never seen before."],
+        choices: [
+            {text: "explore", next: "explore"}
+        ],
+        background: "Images/forest_landscape_2.jpg"
+    },
+    explore: {
+        text: "You set out to explore this strange world.",
+        choices: [
+            {text: "setout", next: "setout_2"}
+        ],
     }
 }
 
