@@ -1,6 +1,6 @@
 // import Typewriter from 'typewriter-effect/dist/core';
 import story from "./story.js";
-import { characterRender } from './Character.js';
+// import { characterRender } from './Character.js';
 
 const textBox = document.getElementById('gameCanvas');
 const modal = document.getElementById('modal');
