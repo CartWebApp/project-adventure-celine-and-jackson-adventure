@@ -1,5 +1,6 @@
 // import Typewriter from 'typewriter-effect/dist/core';
 import story from "./story.js";
+import { characterRender } from './Character.js';
 
 const textBox = document.getElementById('gameCanvas');
 const modal = document.getElementById('modal');
@@ -181,10 +182,6 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
-function characterRender() {
-    //ToDo: render character sprite on canvas
-}
-// characterRender();
 let box = document.getElementById('story-box');
 let choice = document.getElementById('choice');
 let storyLine = ['intro'];
