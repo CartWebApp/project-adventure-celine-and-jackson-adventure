@@ -199,7 +199,7 @@ function choiceBtn(choiceText, decision) {
     if( choiceText === "door"){
         btn = document.createElement("img");
         btn.src = "Images/door.png";
-        btn.classList = "door";
+        btn.classList = 'door';
     } else {
         btn = document.createElement("button");
     }

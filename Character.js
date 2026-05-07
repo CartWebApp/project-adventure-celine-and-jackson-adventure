@@ -8,7 +8,7 @@ export function characterRender() {
     //ToDo: render character sprite on canvas
     let ctx = textBox.getContext('2d');
     let picture = new Image();
-    picture.src = "Images/character.png";
+    picture.src = "Images/Ready for Export.png";
     picture.onload = function() {
         ctx.drawImage(picture, 100, 100, 200, 200 );
     }
