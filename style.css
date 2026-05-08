@@ -406,7 +406,11 @@ bottom: -3%
     width: 500px;
     position: absolute;
     left: 30vw;
-    top: 80vh;
+    top: 60vh;
     z-index: 10;
     height: 500px;
+}
+
+.sword {
+    transform: rotate(45);
 }

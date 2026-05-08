@@ -213,7 +213,7 @@ function choiceBtn(choiceText, decision) {
         console.log("explosion")
         let sword = document.createElement('img');
         sword.src = "Images/sword.png";
-        sword.className = 'sword';
+        sword.className = 'sword'
         let picture = document.createElement('img');
         let target = document.body;
         picture.className = 'explosion'
