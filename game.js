@@ -54,6 +54,7 @@ function takeDamage(amount) {
     }
 }
 
+
 function heal(amount) {
     player.health += amount;
     if (player.health > player.maxHealth) player.health = player.maxHealth;
@@ -240,7 +241,10 @@ function choiceBtn(choiceText, decision) {
    
    addItem(itemData_2);
         }
-
+    // function randomInt(min, max) {
+    //     const num = Math.floor(Math.random() * (max - min + 1)) + min;
+    //     num.innerText = decision.healthChange;
+    // }
         // Check special button actions
         const normalized = choiceText.toLowerCase();
         if (normalized.includes('return to menu')) {

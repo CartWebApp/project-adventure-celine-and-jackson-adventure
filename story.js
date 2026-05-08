@@ -84,16 +84,16 @@ const story = {
     cave_2a: {
         text: ["You make it to the cave.","After some time, you find a chest similar to the one you saw where you found the chestplate."],
         choices: [
-            { text: "open chest", next: "open_2a"}
+            { text: "open chest", next: "open_2a", healthChange: 100}
         ],
-        background: "Images/cave_2.png"
+        background: "Images/cave_2.png",
     },
 
     open_2a: {
 
         text: "You found a health potion! Your health has been fully restored!",
         choices: [
-            { text: "continue", next: "GoodEnding", healthChange: 100 },
+            { text: "continue", next: "GoodEnding", healthChange: -50 },
             { text: "door", next: "SecretEnding" }
         ],
         
@@ -103,7 +103,7 @@ const story = {
 
         text: ["You've defeated the dragon and returned home.","Thank you for playing!"],
         choices: [
-            { text: "Return to Menu", healthChange: -50 },
+            { text: "Return to Menu" },
             { text: "exit" }
         ]
     },
