@@ -401,3 +401,7 @@ background-color:rgba(0, 0, 0, 0);
 width: 20px;
 bottom: -3%
 }
+
+.explosion {
+    width: 100px;
+}

@@ -41,8 +41,8 @@ const story = {
 
         text: ["You touch the stone. Suddenly, you are hit with a bright flash of light.","As the light begins to fade, and you regain your vision, nothing seemed to change. You exit the cave...","'Where am I?'","'This isn't the forest.'","You head back into the cave and grab the stone and try to use it again in hopes that it would bring you back.","Nothing happens, but then a voice resonates from the stone.","'All charges used, catalyst empty, now self destructing in 10 seconds.'","Boulder or Tree?"], 
         choices: [
-            { text: "Boulder", next: "Boulder", explosion: "Images/explosion.gif"},
-            { text: "Tree", next: "Tree", healthChange: -100, explosion: "Images/explosion.gif"}
+            { text: "Boulder", next: "Boulder", images: "Images/explosion.gif"},
+            { text: "Tree", next: "Tree", healthChange: [-100, -100], images: "Images/explosion.gif"}
         ],
         background: "Images/forest_landscape_2.jpg"
     },
@@ -75,16 +75,16 @@ const story = {
         background: "Images/forest_landscape_2.jpg"
     },
     setout_1: {
-        text: "After a while, you spot a large cave in the distance.",
+        text: "After a while, you spot a large cave in the distance, but monsters are guarding it.",
         choices: [
-            { text: "go to the cave", next: "cave_2a" }
+            { text: "go to the cave", next: "cave_2a", healthChange: [0, -99] }
         ],
         background: "Images/forest_landscape.jpg"
     }, 
     cave_2a: {
         text: ["You make it to the cave.","After some time, you find a chest similar to the one you saw where you found the chestplate."],
         choices: [
-            { text: "open chest", next: "open_2a", healthChange: 100}
+            { text: "open chest", next: "open_2a", healthChange: [100, 100] }
         ],
         background: "Images/cave_2.png",
     },
@@ -93,7 +93,7 @@ const story = {
 
         text: "You found a health potion! Your health has been fully restored!",
         choices: [
-            { text: "continue", next: "GoodEnding", healthChange: -50 },
+            { text: "continue", next: "GoodEnding",healthChange: [0 , -50]},
             { text: "door", next: "SecretEnding" }
         ],
         
@@ -121,7 +121,7 @@ const story = {
 
         text: "After a while, you spot a large cave in the distance, but it is guarded by monsters.",
         choices: [
-            { text: "go to the cave", next: "cave_2b", healthChange: -99 }
+            { text: "go to the cave", next: "cave_2b", healthChange: [-1, -99] }
         ],
         background: "Images/forest_landscape.jpg"
     },

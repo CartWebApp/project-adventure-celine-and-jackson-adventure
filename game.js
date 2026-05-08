@@ -207,6 +207,7 @@ function choiceBtn(choiceText, decision) {
         btn.className = "btn";
     }
     btn.innerHTML = choiceText;
+
     
 
 
@@ -214,12 +215,25 @@ function choiceBtn(choiceText, decision) {
 
     btn.addEventListener("click", function() {
         if (decision.healthChange) {
-            if (decision.healthChange < 0) {
-                displayModal(`You took ${Math.abs(decision.healthChange)} damage!`, 'Continue', 'alert');
-                takeDamage(decision.healthChange);
-            } else if (decision.healthChange > 0) {
-                displayModal(`You healed ${decision.healthChange} health!`, 'Continue', );
-                heal(decision.healthChange);
+            console.log(typeof(decision.healthChange));
+            if (Array.isArray(decision.healthChange)) {
+                let hp = randomInt(...decision.healthChange)
+                if (hp < 0) {
+                    displayModal(`You took ${Math.abs(hp)} damage!`, 'Continue', 'alert');
+                    takeDamage(hp);
+                } else if (hp > 0) {
+                    displayModal(`You healed ${Math.abs(hp)} health!`, 'Continue', );
+                    heal(hp);
+                }
+            } else {
+                if (decision.healthChange < 0) {
+                    displayModal(`You took ${Math.abs(decision.healthChange)} damage!`, 'Continue', 'alert');
+                    takeDamage(decision.healthChange);
+                } else if (decision.healthChange > 0) {
+                    displayModal(`You healed ${Math.abs(decision.healthChange)} health!`, 'Continue', );
+                    heal(decision.healthChange);
+                }
+
             }
             if (player.health <= 0) {
                 displayModal('You have died! Returning to menu.', 'Return to Menu', 'alert');
@@ -241,10 +255,12 @@ function choiceBtn(choiceText, decision) {
    
    addItem(itemData_2);
         }
-    // function randomInt(min, max) {
-    //     const num = Math.floor(Math.random() * (max - min + 1)) + min;
-    //     num.innerText = decision.healthChange;
-    // }
+    function randomInt(min, max) {
+        const num = Math.floor(Math.random() * (max - min + 1)) + min;
+        // num.innerText = decision.healthChange;
+        return num;
+    }
+    // randomInt();
         // Check special button actions
         const normalized = choiceText.toLowerCase();
         if (normalized.includes('return to menu')) {
