@@ -208,6 +208,19 @@ function choiceBtn(choiceText, decision) {
     }
     btn.innerHTML = choiceText;
 
+    //unique images in different scenes
+    if( decision.next === "Pickup"){
+        console.log("explosion")
+        let sword = document.createElement('img');
+        sword.src = "Images/sword.png";
+        sword.className = 'sword';
+        let picture = document.createElement('img');
+        let target = document.body;
+        picture.className = 'explosion'
+        picture.src = "Images/explosion.gif";
+        target.appendChild(picture);
+        target.appendChild(sword);
+    }
     
 
 
