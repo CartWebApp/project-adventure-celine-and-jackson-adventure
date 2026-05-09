@@ -395,6 +395,7 @@ body {
     height: 50px;
 }
 
+/* images */
 .door {
 position: absolute;
 background-color:rgba(0, 0, 0, 0);
@@ -406,11 +407,44 @@ bottom: -3%
     width: 500px;
     position: absolute;
     left: 30vw;
-    top: 60vh;
+    top: 70vh;
     z-index: 10;
     height: 500px;
 }
 
 .sword {
-    transform: rotate(45);
+    transform: rotate(45deg);
+    position: absolute;
+    left: 40%;
+    width: 256px;
+    height: 128px;
+    top: 120%;
+}
+
+.boulder {
+    position: absolute;
+    left: 60%;
+    width: 500px;
+    height: 500px;
+    top: 65%;
+}
+
+.fire {
+    position: absolute;
+    top: 5%;
+    left: 5%;
+}
+
+.chest {
+    position: absolute;
+    left: 80%;
+}
+
+.boss {
+    position: absolute;
+    transform: rotate(45deg);
+    width: 500px;
+    height: 500px;
+    top: 60%;
+    left: 60%;
 }

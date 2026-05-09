@@ -210,19 +210,64 @@ function choiceBtn(choiceText, decision) {
 
     //unique images in different scenes
     if( decision.next === "Pickup"){
+        let target = document.body;        
         console.log("explosion")
         let sword = document.createElement('img');
         sword.src = "Images/sword.png";
         sword.className = 'sword'
+        target.appendChild(sword);        
         let picture = document.createElement('img');
-        let target = document.body;
         picture.className = 'explosion'
         picture.src = "Images/explosion.gif";
         target.appendChild(picture);
-        target.appendChild(sword);
+        let fire = document.createElement('img');
+        fire.src = "Images/fire.gif";
+        fire.className = 'fire';
+        target.appendChild(fire);
     }
-    
 
+    if (decision.next !== "Pickup") {
+        let explosion = document.querySelector('.explosion');
+        if (explosion) explosion.remove();
+        let fire = document.querySelector('.fire');
+        if (fire) fire.remove();
+        let sword = document.querySelector('.sword');
+        if (sword) sword.remove();
+    }
+        
+    if (decision.next === "Boulder") {
+        let target = document.body;
+        let boulder = document.createElement('img');
+        boulder.src = "Images/boulder.png";
+        boulder.className = 'boulder';
+        target.appendChild(boulder);
+    } 
+            if (decision.next !== "Boulder") {
+                let boulder = document.querySelector('.boulder');
+                if (boulder) boulder.remove();
+                console.log('Boulder gone');
+            }
+    if (decision.next === "open"){
+        let target = document.body;
+        let chest = document.createElement('img');
+        chest.src = "Images/chest.webp";
+        chest.className = 'chest';
+        target.appendChild(chest);
+    }
+
+                if (decision.next !== "open") {
+                let chest = document.querySelector('.chest');
+                if (chest) chest.remove();
+                console.log('chest gone');
+            }
+
+    if (decision.next === "GoodEnding") {
+        let target = document.body;
+        let boss = document.createElement('img');
+        boss.src = "Images/final_boss.gif";
+        boss.className = 'boss';
+        target.appendChild(boss);
+    }
 
     choice.appendChild(btn);
 
@@ -252,6 +297,8 @@ function choiceBtn(choiceText, decision) {
                 displayModal('You have died! Returning to menu.', 'Return to Menu', 'alert');
                 return;
             }
+
+
         }
 
         // Add inventory items
