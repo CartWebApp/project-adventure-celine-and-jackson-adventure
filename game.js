@@ -247,7 +247,7 @@ function choiceBtn(choiceText, decision) {
                 if (boulder) boulder.remove();
                 console.log('Boulder gone');
             }
-    if (decision.next === "open"){
+    if (decision.next === "open" || decision.next === "open_2a"){
         let target = document.body;
         let chest = document.createElement('img');
         chest.src = "Images/chest.webp";
